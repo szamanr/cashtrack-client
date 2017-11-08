@@ -1,7 +1,21 @@
 <!-- navigation -->
-<nav>
-  <a routerLink="/table" routerLinkActive="active"><i class="glyphicon glyphicon-th-list"></i></a>
-</nav>
+<ul class="nav">
+  <li class="nav-item">
+    <a routerLink="/graph" routerLinkActive="active" class="nav-link disabled">
+      <span class="nav-icon oi oi-pie-chart" title="graph" aria-hidden="true"></span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="/table" routerLinkActive="active" class="nav-link">
+      <span class="nav-icon oi oi-list" title="table view" aria-hidden="true"></span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="/filter" routerLinkActive="active" class="nav-link disabled">
+      <span class="nav-icon oi oi-beaker" title="filter" aria-hidden="true"></span>
+    </a>
+  </li>
+</ul>
 
 <!-- content -->
 <router-outlet></router-outlet>
