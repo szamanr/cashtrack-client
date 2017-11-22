@@ -1,4 +1,4 @@
-<table class="table table-responsive-md" id="items-list">
+<table class="table table-responsive-sm" id="items-list">
   <thead>
   <tr>
     <th scope="col">date</th>
@@ -9,12 +9,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td contenteditable>...</td> <!-- date -->
-    <td contenteditable>...</td> <!-- amount -->
-    <td contenteditable>...</td> <!-- item -->
-    <td contenteditable>...</td> <!-- category -->
-    <td contenteditable>...</td> <!-- payment type -->
+  <tr *ngFor="let item of items">
+    <td contenteditable>{{item.date.toLocaleDateString()}} {{item.date.toLocaleTimeString()}}</td> <!-- date --> <!-- TODO: custom date format -->
+    <td contenteditable>{{item.amount}}</td> <!-- amount -->
+    <td contenteditable>{{item.content}}</td> <!-- item -->
+    <td contenteditable>{{item.category}}</td> <!-- category -->
+    <td contenteditable>{{item.payment}}</td> <!-- payment type -->
   </tr>
   </tbody>
 </table>
