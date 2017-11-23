@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from '../item';
+import {ItemService} from '../item.service';
 
 @Component({
   selector: 'app-cash-table',
@@ -9,15 +10,11 @@ import {Item} from '../item';
 export class CashTableComponent implements OnInit {
   items: Item[] = [];
 
-  constructor() {
-    // TODO: fetch items through service
-    this.items.push(
-      new Item(new Date, 1, 'test1', 'cat1', 'cash'),
-      new Item(new Date, 2, 'test2', 'cat1', 'cash')
-    );
-  }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+    this.itemService.getItems()
+      .then(items => this.items = items);
   }
 
 }
