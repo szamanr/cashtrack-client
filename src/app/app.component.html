@@ -1,27 +1,29 @@
 <!-- navigation -->
-<ul class="nav">
-  <li class="nav-item">
-    <a routerLink="/graph" routerLinkActive="active" class="nav-link disabled">
-      <span class="nav-icon oi oi-pie-chart" title="graph" aria-hidden="true"></span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a routerLink="/table" routerLinkActive="active" class="nav-link">
-      <span class="nav-icon oi oi-list" title="table view" aria-hidden="true"></span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a routerLink="/filter" routerLinkActive="active" class="nav-link disabled">
-      <span class="nav-icon oi oi-beaker" title="filter" aria-hidden="true"></span>
-    </a>
-  </li>
-</ul>
+<nav>
+  <ul class="nav justify-content-center flex-sm-column" id="navigation-bar">
+    <li class="nav-item">
+      <a routerLink="/graph" routerLinkActive="active" class="nav-link disabled">
+        <span class="nav-icon oi oi-pie-chart" title="graph" aria-hidden="true"></span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/table" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon oi oi-list" title="table view" aria-hidden="true"></span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/filter" routerLinkActive="active" class="nav-link disabled">
+        <span class="nav-icon oi oi-beaker" title="filter" aria-hidden="true"></span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 <!-- content -->
 <router-outlet></router-outlet>
 
 <!-- footer -->
-<footer>
+<footer class="page">
   <hr/>
   <!-- developer info -->
   <p class="d-sm-none">viewport: xs</p>

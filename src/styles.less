@@ -1,10 +1,30 @@
-nav {
-  .nav-icon {
-    width: 32px;
-    height: 32px;
+@import "variables";
 
-    &.unavailable {
-      color: gray;
+#navigation-bar {
+  // on larger screens, the navigation bar is floating on the left of the screen
+  @media screen and (min-width: @sm) {
+    position: fixed;
+    min-height: 100%;  // fallback for browsers do not support vh unit
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+  }
+}
+
+// on larger screens, offset the app main page to make space for vertical navigation bar
+@media screen and (min-width: @sm) {
+  body {
+    width: calc(~"100% - 45px");
+
+    .page {
+      position: relative;
+      left: 45px;
     }
   }
+}
+
+footer {
+  color: #808080;
+  font-size: smaller;
 }

@@ -3,7 +3,7 @@ import {Item} from '../item';
 import {ItemService} from '../item.service';
 
 @Component({
-  selector: 'app-cash-table',
+  selector: 'app-cash-table.page',
   templateUrl: './cash-table.component.html',
   styleUrls: ['./cash-table.component.less'],
 })
