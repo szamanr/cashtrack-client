@@ -12,7 +12,7 @@
   <tr *ngFor="let item of items">
     <td contenteditable>{{item.date.toLocaleDateString()}} {{item.date.toLocaleTimeString()}}</td> <!-- date --> <!-- TODO: custom date format -->
     <td contenteditable>{{
-      item.amount.toFixed(2) + '' +
+      item.amount.toFixed(2) + ' ' +
       item.currency
       }} <!-- TODO: get currency symbol instead of code -->
       <!-- TODO: probably this kind of operations should be done in the component -->

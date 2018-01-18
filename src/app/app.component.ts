@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ItemService} from './item.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cashtrack';
+
+  constructor(private itemService: ItemService) {
+  }
+
+  addItem() {
+    // TODO: navigate to table page
+
+    // add new item
+    this.itemService.addItem();
+  }
 }
