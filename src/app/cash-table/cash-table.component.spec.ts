@@ -51,7 +51,9 @@ describe('CashTableComponent', () => {
     expect(component.items).toBeDefined();
     expect(component.items.length).toEqual(0);
 
-    // TODO
+    fixture.whenStable().then(() => {
+      expect(component.items.length).toBeGreaterThan(0);
+    });
   });
 
   // TODO
@@ -59,7 +61,7 @@ describe('CashTableComponent', () => {
   });*/
 
   // TODO
-  /*it('should display fetched items in the table', () => {
+  /*it('should display fetched items in a table', () => {
   });*/
 
   // TODO
