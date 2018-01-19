@@ -21,7 +21,9 @@ export class ItemService {
   /**
    * adds a new item
    */
-  addItem() {
-    this.items.push(new Item());
+  addItem(): Promise<Item> {
+    const item = new Item();
+    this.items.push(item);
+    return Promise.resolve(item);
   }
 }
