@@ -25,7 +25,7 @@ describe('CashTableComponent', () => {
     table = compiled.querySelector('table');
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
@@ -42,11 +42,6 @@ describe('CashTableComponent', () => {
   // TODO: UI testing
   // it('the table should scroll on mobile', () => {});
 
-  // TODO: add test after having fetched items
-  /*it('the table items should be editable in-place', () => {
-    expect(table.querySelector('td[contenteditable]')).toBeTruthy();
-  });*/
-
   it('should fetch items', () => {
     expect(component.items).toBeDefined();
     expect(component.items.length).toEqual(0);
@@ -56,15 +51,24 @@ describe('CashTableComponent', () => {
     });
   });
 
-  // TODO
-  /*it('should use the ItemService', () => {
-  });*/
+  it('should display fetched items in a table', () => {
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(table.querySelector('tbody tr')).toBeTruthy();
+    });
+  });
 
-  // TODO
-  /*it('should display fetched items in a table', () => {
-  });*/
+  it('each item should be displayed in a single row', () => {
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(table.querySelector('tbody').querySelectorAll('tr').length).toEqual(component.items.length);
+    });
+  });
 
-  // TODO
-  /*it('each item should be displayed in a single row', () => {
-  });*/
+  it('the table items should be editable in-place', () => {
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(table.querySelector('td[contenteditable]')).toBeTruthy();
+    });
+  });
 });
