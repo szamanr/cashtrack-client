@@ -9,14 +9,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let item of items">
-    <td contenteditable>{{item.date.toLocaleDateString()}} {{item.date.toLocaleTimeString()}}</td> <!-- date --> <!-- TODO: custom date format -->
-    <td contenteditable>{{
-      item.amount.toFixed(2) + ' ' +
-      item.currency
-      }} <!-- TODO: get currency symbol instead of code -->
-      <!-- TODO: probably this kind of operations should be done in the component -->
-    </td> <!-- amount -->
+  <tr *ngFor="let item of items; let i = index;" (click)="onSelect(i, $event)">
+    <!-- TODO: custom date format -->
+    <td contenteditable>{{item.date.toLocaleDateString()}} {{item.date.toLocaleTimeString()}}</td> <!-- date -->
+    <!-- TODO: get currency symbol instead of code -->
+    <!-- TODO: maybe combining amount and currency should be done in the component -->
+    <td contenteditable>{{item.amount.toFixed(2)}} {{item.currency}}</td> <!-- amount -->
     <td contenteditable>{{item.content}}</td> <!-- item -->
     <td contenteditable>{{item.category}}</td> <!-- category -->
     <td contenteditable>{{item.payment}}</td> <!-- payment type -->
