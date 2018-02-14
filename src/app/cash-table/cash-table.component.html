@@ -10,18 +10,23 @@
     <tr>
       <!-- date -->
       <!-- TODO: custom date format -->
-      <td pEditableColumn>
+      <td>
+        {{rowData.date.toLocaleDateString()}}
+        {{rowData.date.toLocaleTimeString()}}
+      </td>
+      <!-- TODO: ERROR: cannot edit date because of format issue -->
+      <!--<td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input type="text" [(ngModel)]="rowData.date">
+            <input type="datetime-local" [(ngModel)]="rowData.date">
           </ng-template>
           <ng-template pTemplate="output">
             {{rowData.date.toLocaleDateString()}}
-            <!--{{rowData.date.toLocaleDateString('en-GB', dateOptions)}}-->
+            &lt;!&ndash;{{rowData.date.toLocaleDateString('en-GB', dateOptions)}}&ndash;&gt;
             {{rowData.date.toLocaleTimeString()}}
           </ng-template>
         </p-cellEditor>
-      </td>
+      </td>-->
 
       <!-- amount -->
       <!-- TODO: get currency symbol instead of code -->
@@ -29,12 +34,13 @@
       <td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input type="text" [(ngModel)]="rowData.amount">
+            <input type="number" [(ngModel)]="rowData.amount">
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.amount.toFixed(2)}} {{rowData.currency}}
+            {{rowData.amount.toFixed(2)}}
           </ng-template>
         </p-cellEditor>
+        {{rowData.currency}}
       </td>
 
       <!-- content -->
