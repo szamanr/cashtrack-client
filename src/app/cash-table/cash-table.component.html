@@ -1,7 +1,7 @@
-<p-table [columns]="cols" [value]="items" id="items-list">
+<p-table class="table table-responsive-sm" [columns]="cols" [value]="items" id="items-list">
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of cols">
+      <th scope="col" *ngFor="let col of cols">
         {{col.header}}
       </th>
     </tr>
