@@ -9,12 +9,22 @@ import {ItemService} from '../item.service';
 })
 export class CashTableComponent implements OnInit {
   items: Item[] = [];
+  private cols: { field: string; header: string }[];
+  /*dateOptions: Intl.DateTimeFormatOptions = {
+  };*/
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
     this.itemService.getItems()
       .then(items => this.items = items);
+    this.cols = [
+      { field: 'date', header: 'date' },
+      { field: 'amount', header: 'amount' },
+      { field: 'content', header: 'item' },
+      { field: 'category', header: 'category' },
+      { field: 'payment', header: 'payment' },
+    ];
   }
 
   editItem(target, item: Item) {

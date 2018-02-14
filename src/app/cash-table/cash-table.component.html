@@ -1,24 +1,78 @@
-<table class="table table-responsive-sm" id="items-list">
-  <thead>
-  <tr>
-    <th scope="col">date</th>
-    <th scope="col">amount</th>
-    <th scope="col">item</th>
-    <th scope="col">category</th>
-    <th scope="col">payment</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let item of items; let i = index;" (click)="onSelect(i, $event)">
-    <!-- TODO: custom date format -->
-    <td contenteditable>{{item.date.toLocaleDateString()}} {{item.date.toLocaleTimeString()}}</td> <!-- date -->
-    <!-- TODO: get currency symbol instead of code -->
-    <!-- TODO: maybe combining amount and currency should be done in the component -->
-    <td contenteditable>{{item.amount.toFixed(2)}} {{item.currency}}</td> <!-- amount -->
-    <td contenteditable>{{item.content}}</td> <!-- item -->
-    <td contenteditable>{{item.category}}</td> <!-- category -->
-    <td contenteditable>{{item.payment}}</td> <!-- payment type -->
-  </tr>
-  </tbody>
-</table>
+<p-table [columns]="cols" [value]="items" id="items-list">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of cols">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <!-- date -->
+      <!-- TODO: custom date format -->
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input type="text" [(ngModel)]="rowData.date">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.date.toLocaleDateString()}}
+            <!--{{rowData.date.toLocaleDateString('en-GB', dateOptions)}}-->
+            {{rowData.date.toLocaleTimeString()}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <!-- amount -->
+      <!-- TODO: get currency symbol instead of code -->
+      <!-- TODO: maybe combining amount and currency should be done in the component -->
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input type="text" [(ngModel)]="rowData.amount">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.amount.toFixed(2)}} {{rowData.currency}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <!-- content -->
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input type="text" [(ngModel)]="rowData.content">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.content}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <!-- category -->
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input type="text" [(ngModel)]="rowData.category">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.category}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <!-- payment -->
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input type="text" [(ngModel)]="rowData.payment">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.payment}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
 

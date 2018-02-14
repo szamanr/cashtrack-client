@@ -8,12 +8,16 @@ import {AppComponent} from './app.component';
 import {CashTableComponent} from './cash-table/cash-table.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ItemService} from './item.service';
+import {TableModule} from 'primeng/table';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    TableModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
