@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from '../item';
 import {ItemService} from '../item.service';
+import {Account} from '../account';
+import {Currency} from '../currency';
+import {CurrencyService} from '../currency.service';
+import {AccountService} from '../account.service';
 
 @Component({
   selector: 'app-cash-table.page',
@@ -9,21 +13,35 @@ import {ItemService} from '../item.service';
 })
 export class CashTableComponent implements OnInit {
   items: Item[] = [];
+  accounts: Account[] = [];
+  currencies: Currency[] = [];
+
   private cols: { field: string; header: string }[];
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
 
-  constructor(private itemService: ItemService) { }
+  constructor(
+    private itemService: ItemService,
+    private currencyService: CurrencyService,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit() {
+    // fetch data
     this.itemService.getItems()
       .then(items => this.items = items);
+    this.currencyService.getCurrencies()
+      .then(currencies => this.currencies = currencies);
+    this.accountService.getAccounts()
+      .then(accounts => this.accounts = accounts);
+
+    // prepare table structure
     this.cols = [
       { field: 'date', header: 'date' },
       { field: 'amount', header: 'amount' },
       { field: 'content', header: 'item' },
       { field: 'category', header: 'category' },
-      { field: 'payment', header: 'payment' },
+      { field: 'account', header: 'account' },
     ];
   }
 

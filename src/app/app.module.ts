@@ -10,6 +10,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {ItemService} from './item.service';
 import {TableModule} from 'primeng/table';
 import {FormsModule} from '@angular/forms';
+import {CurrencyService} from './currency.service';
+import {AccountService} from './account.service';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import {FormsModule} from '@angular/forms';
     CashTableComponent,
   ],
   providers: [
-    ItemService
+    ItemService,
+    CurrencyService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })

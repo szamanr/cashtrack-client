@@ -4,6 +4,8 @@ import {CashTableComponent} from './cash-table.component';
 import {ItemService} from '../item.service';
 import {FormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
+import {CurrencyService} from '../currency.service';
+import {AccountService} from '../account.service';
 
 describe('CashTableComponent', () => {
   let component: CashTableComponent;
@@ -14,7 +16,7 @@ describe('CashTableComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CashTableComponent],
-      providers: [ItemService],
+      providers: [ItemService, CurrencyService, AccountService],
       imports: [TableModule,
         FormsModule]
     })
@@ -75,4 +77,22 @@ describe('CashTableComponent', () => {
       expect(table.querySelector('td[contenteditable]')).toBeTruthy();
     });
   });*/
+
+  it('should fetch payment accounts', () => {
+    expect(component.accounts).toBeDefined();
+    expect(component.accounts.length).toEqual(0);
+
+    fixture.whenStable().then(() => {
+      expect(component.accounts.length).toBeGreaterThan(0);
+    });
+  });
+
+  it('should fetch available currencies', () => {
+    expect(component.currencies).toBeDefined();
+    expect(component.currencies.length).toEqual(0);
+
+    fixture.whenStable().then(() => {
+      expect(component.currencies.length).toBeGreaterThan(0);
+    });
+  });
 });

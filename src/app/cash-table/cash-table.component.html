@@ -40,7 +40,16 @@
             {{rowData.amount.toFixed(2)}}
           </ng-template>
         </p-cellEditor>
-        {{rowData.currency}}
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <select [(ngModel)]="rowData.currency">
+              <option *ngFor="let currency of currencies">{{currency.symbol}}</option>
+            </select>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.currency}}
+          </ng-template>
+        </p-cellEditor>
       </td>
 
       <!-- content -->
@@ -67,14 +76,17 @@
         </p-cellEditor>
       </td>
 
-      <!-- payment -->
+      <!-- payment account -->
       <td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input type="text" [(ngModel)]="rowData.payment">
+
+            <select [(ngModel)]="rowData.account">
+              <option *ngFor="let account of accounts">{{account.name}}</option>
+            </select>
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.payment}}
+            {{rowData.account}}
           </ng-template>
         </p-cellEditor>
       </td>
