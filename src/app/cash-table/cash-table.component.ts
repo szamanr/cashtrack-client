@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Item} from '../item';
-import {ItemService} from '../item.service';
-import {Account} from '../account';
-import {Currency} from '../currency';
-import {CurrencyService} from '../currency.service';
-import {AccountService} from '../account.service';
+import {Item} from '../../api/item';
+import {ItemService} from '../../api/item.service';
+import {Account} from '../../api/account';
+import {Currency} from '../../api/currency';
+import {CurrencyService} from '../../api/currency.service';
+import {AccountService} from '../../api/account.service';
 
 @Component({
   selector: 'app-cash-table.page',

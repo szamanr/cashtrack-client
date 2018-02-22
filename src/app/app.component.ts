@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ItemService} from './item.service';
+import {ItemService} from '../api/item.service';
 
 @Component({
   selector: 'app-root',

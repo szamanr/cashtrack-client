@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CashTableComponent} from './cash-table.component';
-import {ItemService} from '../item.service';
+import {ItemService} from '../../api/item.service';
 import {FormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
-import {CurrencyService} from '../currency.service';
-import {AccountService} from '../account.service';
+import {CurrencyService} from '../../api/currency.service';
+import {AccountService} from '../../api/account.service';
 
 describe('CashTableComponent', () => {
   let component: CashTableComponent;

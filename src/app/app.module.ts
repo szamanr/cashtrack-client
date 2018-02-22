@@ -7,11 +7,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
 import {CashTableComponent} from './cash-table/cash-table.component';
 import {AppRoutingModule} from './app-routing.module';
-import {ItemService} from './item.service';
+import {ItemService} from '../api/item.service';
 import {TableModule} from 'primeng/table';
 import {FormsModule} from '@angular/forms';
-import {CurrencyService} from './currency.service';
-import {AccountService} from './account.service';
+import {CurrencyService} from '../api/currency.service';
+import {AccountService} from '../api/account.service';
 
 @NgModule({
   imports: [

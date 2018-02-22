@@ -1,8 +1,8 @@
 // TODO: this is some mock data that should be fetched from the server
 
-import {Item} from './app/item';
-import {Currency} from './app/currency';
-import {Account} from './app/account';
+import {Item} from './api/item';
+import {Currency} from './api/currency';
+import {Account} from './api/account';
 
 export const CURRENCIES: Currency[] = [
   new Currency('€', 'EUR', 'euro'),
