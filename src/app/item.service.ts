@@ -14,14 +14,14 @@ export class ItemService {
    * fetches an array of items
    * @returns {Promise<Item[]>}
    */
-  getItems(): Promise<Item[]> {
+  getAll(): Promise<Item[]> {
     return Promise.resolve(this.items);
   }
 
   /**
    * adds a new item
    */
-  addItem(): Promise<Item> {
+  insert(): Promise<Item> {
     const item = new Item();
     this.items.push(item);
     return Promise.resolve(item);

@@ -14,7 +14,7 @@ export class AccountService {
    * fetches an array of payment accounts
    * @returns {Promise<Account[]>}
    */
-  getAccounts(): Promise<Account[]> {
+  getAll(): Promise<Account[]> {
     return Promise.resolve(this.accounts);
   }
 }

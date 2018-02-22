@@ -16,6 +16,6 @@ export class AppComponent {
     // TODO: navigate to table page
 
     // add new item
-    this.itemService.addItem();
+    this.itemService.insert();
   }
 }

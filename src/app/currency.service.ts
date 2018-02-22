@@ -14,7 +14,7 @@ export class CurrencyService {
    * fetches an array of currencies
    * @returns {Promise<Currency[]>}
    */
-  getCurrencies(): Promise<Currency[]> {
+  getAll(): Promise<Currency[]> {
     return Promise.resolve(this.currencies);
   }
 }

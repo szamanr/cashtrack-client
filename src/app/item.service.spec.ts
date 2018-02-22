@@ -20,13 +20,13 @@ describe('ItemService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should have a getItems method', () => {
-    const method = service.getItems;
+  it('should have a getAll method', () => {
+    const method = service.getAll;
     expect(method).toBeDefined();
   });
 
   it('should fetch an array of items', () => {
-    const result = service.getItems();
+    const result = service.getAll();
     result
       .then(rslt => {
         expect(rslt).toEqual(jasmine.any(Array));
@@ -34,23 +34,23 @@ describe('ItemService', () => {
       });
   });
 
-  it('should have an addItem method', () => {
-    const method = service.addItem;
+  it('should have an insert method', () => {
+    const method = service.insert;
     expect(method).toBeDefined();
   });
 
-  it('the addItem method should create a new item', () => {
+  it('the insert method should create a new item', () => {
     let initialItemsLength: number;
 
     // fetch items
-    service.getItems().then(items => {
+    service.getAll().then(items => {
       initialItemsLength = items.length;
     }).then(() => {
       // add new item
-      service.addItem();
+      service.insert();
 
       // check if item added
-      service.getItems().then(function (fetchedItems) {
+      service.getAll().then(function (fetchedItems) {
         expect(fetchedItems.length).toEqual(initialItemsLength + 1);
       });
     });

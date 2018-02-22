@@ -20,13 +20,13 @@ describe('CurrencyService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should have a getCurrencies method', () => {
-    const method = service.getCurrencies;
+  it('should have a getAll method', () => {
+    const method = service.getAll;
     expect(method).toBeDefined();
   });
 
   it('should fetch an array of items', () => {
-    const result = service.getCurrencies();
+    const result = service.getAll();
     result
       .then(rslt => {
         expect(rslt).toEqual(jasmine.any(Array));

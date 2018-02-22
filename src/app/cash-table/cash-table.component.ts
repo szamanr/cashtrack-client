@@ -28,11 +28,11 @@ export class CashTableComponent implements OnInit {
 
   ngOnInit() {
     // fetch data
-    this.itemService.getItems()
+    this.itemService.getAll()
       .then(items => this.items = items);
-    this.currencyService.getCurrencies()
+    this.currencyService.getAll()
       .then(currencies => this.currencies = currencies);
-    this.accountService.getAccounts()
+    this.accountService.getAll()
       .then(accounts => this.accounts = accounts);
 
     // prepare table structure

@@ -22,13 +22,13 @@ describe('AccountService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should have a getAccounts method', () => {
-    const method = service.getAccounts;
+  it('should have a getAll method', () => {
+    const method = service.getAll;
     expect(method).toBeDefined();
   });
 
   it('should fetch an array of items', () => {
-    const result = service.getAccounts();
+    const result = service.getAll();
     result
       .then(rslt => {
         expect(rslt).toEqual(jasmine.any(Array));
