@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Currency} from './currency';
 import {CURRENCIES} from '../mock.data';
 

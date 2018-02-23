@@ -1,7 +1,6 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {AccountService} from './account.service';
-import {CurrencyService} from './currency.service';
 import {Account} from './account';
 
 describe('AccountService', () => {

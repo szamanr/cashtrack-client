@@ -23,7 +23,7 @@ import {AccountService} from '../api/account.service';
   ],
   declarations: [
     AppComponent,
-    CashTableComponent,
+    CashTableComponent
   ],
   providers: [
     ItemService,

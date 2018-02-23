@@ -4,7 +4,7 @@ import {CashTableComponent} from './cash-table/cash-table.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/table', pathMatch: 'full'},
-  {path: 'table', component: CashTableComponent},
+  {path: 'table', component: CashTableComponent}
 ];
 
 @NgModule({

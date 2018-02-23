@@ -9,7 +9,7 @@ import {AccountService} from '../../api/account.service';
 @Component({
   selector: 'app-cash-table.page',
   templateUrl: './cash-table.component.html',
-  styleUrls: ['./cash-table.component.less'],
+  styleUrls: ['./cash-table.component.less']
 })
 export class CashTableComponent implements OnInit {
   items: Item[] = [];
@@ -17,14 +17,14 @@ export class CashTableComponent implements OnInit {
   currencies: Currency[] = [];
 
   private cols: { field: string; header: string }[];
+
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
 
-  constructor(
-    private itemService: ItemService,
-    private currencyService: CurrencyService,
-    private accountService: AccountService
-  ) {}
+  constructor(private itemService: ItemService,
+              private currencyService: CurrencyService,
+              private accountService: AccountService) {
+  }
 
   ngOnInit() {
     // fetch data
@@ -37,11 +37,11 @@ export class CashTableComponent implements OnInit {
 
     // prepare table structure
     this.cols = [
-      { field: 'date', header: 'date' },
-      { field: 'amount', header: 'amount' },
-      { field: 'content', header: 'item' },
-      { field: 'category', header: 'category' },
-      { field: 'account', header: 'account' },
+      {field: 'date', header: 'date'},
+      {field: 'amount', header: 'amount'},
+      {field: 'content', header: 'item'},
+      {field: 'category', header: 'category'},
+      {field: 'account', header: 'account'}
     ];
   }
 
