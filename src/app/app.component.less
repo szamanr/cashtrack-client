@@ -1,6 +1,24 @@
+@import "../styles";
+
 nav {
-  #add-item-button {
-    color: darken(white, 20%);
-    cursor: pointer;
+  #navigation-bar {
+    // on larger screens, the navigation bar is floating on the left of the screen
+    @media screen and (min-width: @sm) {
+      position: fixed;
+      min-height: 100%;  // fallback for browsers do not support vh unit
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+    }
+
+    #add-item-button {
+      color: darken(white, 20%);
+    }
   }
+}
+
+footer {
+  color: #808080;
+  font-size: smaller;
 }
