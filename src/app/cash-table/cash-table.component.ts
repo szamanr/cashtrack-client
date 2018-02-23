@@ -44,13 +44,4 @@ export class CashTableComponent implements OnInit {
       {field: 'account', header: 'account'}
     ];
   }
-
-  editItem(target, item: Item) {
-    console.log('updating ', item, 'with new data: ', target);
-  }
-
-  onSelect(index, element) {
-    console.log(element); //
-    // this.items[index].content = 'clicked';
-  }
 }
