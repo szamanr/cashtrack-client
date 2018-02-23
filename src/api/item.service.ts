@@ -26,4 +26,13 @@ export class ItemService {
     this.items.push(item);
     return Promise.resolve(item);
   }
+
+  /**
+   * removes an item
+   * @param {Item} item
+   * @returns {null}
+   */
+  delete(item: Item): void {
+    this.items.splice(this.items.indexOf(item), 1);
+  }
 }

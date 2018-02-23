@@ -15,15 +15,21 @@ export class CashTableComponent implements OnInit {
   items: Item[] = [];
   accounts: Account[] = [];
   currencies: Currency[] = [];
+  itemService: ItemService;
+  currencyService: CurrencyService;
+  accountService: AccountService;
 
   private cols: { field: string; header: string }[];
 
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
 
-  constructor(private itemService: ItemService,
-              private currencyService: CurrencyService,
-              private accountService: AccountService) {
+  constructor(itemService: ItemService,
+              currencyService: CurrencyService,
+              accountService: AccountService) {
+    this.itemService = itemService;
+    this.currencyService = currencyService;
+    this.accountService = accountService;
   }
 
   ngOnInit() {

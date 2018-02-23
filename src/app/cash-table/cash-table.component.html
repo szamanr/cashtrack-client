@@ -90,6 +90,13 @@
           </ng-template>
         </p-cellEditor>
       </td>
+
+      <!-- remove item -->
+      <td>
+        <a (click)="itemService.delete(rowData)" label="delete">
+          <span class="oi oi-x" title="delete item" aria-hidden="true"></span>
+        </a>
+      </td>
     </tr>
   </ng-template>
 </p-table>
