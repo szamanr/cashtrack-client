@@ -1,29 +1,29 @@
-<p-table class="table table-responsive-sm" [columns]="cols" [value]="items" id="items-list">
-  <ng-template pTemplate="header" let-columns>
+<p-table [value]="items" id="items-list" class="table table-responsive-sm">
+  <ng-template pTemplate="header">
     <tr>
-      <th scope="col" *ngFor="let col of cols">
+      <th *ngFor="let col of cols">
         {{col.header}}
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
+  <ng-template pTemplate="body" let-item>
     <tr>
       <!-- date -->
       <!-- TODO: custom date format -->
       <td>
-        {{rowData.date.toLocaleDateString()}}
-        {{rowData.date.toLocaleTimeString()}}
+        {{item.date.toLocaleDateString()}}
+        {{item.date.toLocaleTimeString()}}
       </td>
       <!-- TODO: ERROR: cannot edit date because of format issue -->
       <!--<td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input type="datetime-local" [(ngModel)]="rowData.date">
+            <input type="datetime-local" [(ngModel)]="item.date">
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.date.toLocaleDateString()}}
-            &lt;!&ndash;{{rowData.date.toLocaleDateString('en-GB', dateOptions)}}&ndash;&gt;
-            {{rowData.date.toLocaleTimeString()}}
+            {{item.date.toLocaleDateString()}}
+            &lt;!&ndash;{{item.date.toLocaleDateString('en-GB', dateOptions)}}&ndash;&gt;
+            {{item.date.toLocaleTimeString()}}
           </ng-template>
         </p-cellEditor>
       </td>-->
@@ -34,20 +34,20 @@
       <td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input type="number" [(ngModel)]="rowData.amount">
+            <input type="number" [(ngModel)]="item.amount">
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.amount.toFixed(2)}}
+            {{item.amount.toFixed(2)}}
           </ng-template>
         </p-cellEditor>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <select [(ngModel)]="rowData.currency">
+            <select [(ngModel)]="item.currency">
               <option *ngFor="let currency of currencies">{{currency.symbol}}</option>
             </select>
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.currency}}
+            {{item.currency}}
           </ng-template>
         </p-cellEditor>
       </td>
@@ -56,10 +56,10 @@
       <td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input type="text" [(ngModel)]="rowData.content">
+            <input type="text" [(ngModel)]="item.content">
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.content}}
+            {{item.content}}
           </ng-template>
         </p-cellEditor>
       </td>
@@ -68,10 +68,10 @@
       <td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input type="text" [(ngModel)]="rowData.category">
+            <input type="text" [(ngModel)]="item.category">
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.category}}
+            {{item.category}}
           </ng-template>
         </p-cellEditor>
       </td>
@@ -81,19 +81,19 @@
         <p-cellEditor>
           <ng-template pTemplate="input">
 
-            <select [(ngModel)]="rowData.account">
+            <select [(ngModel)]="item.account">
               <option *ngFor="let account of accounts">{{account.name}}</option>
             </select>
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.account}}
+            {{item.account}}
           </ng-template>
         </p-cellEditor>
       </td>
 
       <!-- remove item -->
       <td>
-        <a class="button action-button" (click)="itemService.delete(rowData)" label="delete">
+        <a class="button action-button" (click)="itemService.delete(item)" label="delete">
           <span class="oi oi-x" title="delete item" aria-hidden="true"></span>
         </a>
       </td>

@@ -19,7 +19,7 @@ export class CashTableComponent implements OnInit {
   currencyService: CurrencyService;
   accountService: AccountService;
 
-  private cols: { field: string; header: string }[];
+  cols: { field: string; header: string }[];
 
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
