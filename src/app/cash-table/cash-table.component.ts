@@ -20,6 +20,7 @@ export class CashTableComponent implements OnInit {
   accountService: AccountService;
 
   cols: { field: string; header: string }[];
+  rowsPerPage: number;
 
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
@@ -40,6 +41,9 @@ export class CashTableComponent implements OnInit {
       .then(currencies => this.currencies = currencies);
     this.accountService.getAll()
       .then(accounts => this.accounts = accounts);
+
+    // TODO: fetch user settings
+    this.rowsPerPage = 10;
 
     // prepare table structure
     this.cols = [

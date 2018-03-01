@@ -1,10 +1,13 @@
-<p-table [value]="items" id="items-list" [responsive]="true">
+<p-table [value]="items" id="items-list" [responsive]="true" [paginator]="true" [rows]="rowsPerPage">
   <ng-template pTemplate="header">
     <tr>
       <th *ngFor="let col of cols" [pSortableColumn]="col.field">
         {{col.header}}
         <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
+
+      <!-- action button dummy column -->
+      <th></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-item>
