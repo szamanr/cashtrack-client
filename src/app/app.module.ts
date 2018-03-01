@@ -12,6 +12,7 @@ import {TableModule} from 'primeng/table';
 import {FormsModule} from '@angular/forms';
 import {CurrencyService} from '../api/currency.service';
 import {AccountService} from '../api/account.service';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {AccountService} from '../api/account.service';
   ],
   declarations: [
     AppComponent,
-    CashTableComponent
+    CashTableComponent,
+    UserMenuComponent
   ],
   providers: [
     ItemService,

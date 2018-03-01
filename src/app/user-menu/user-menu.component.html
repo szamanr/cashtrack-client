@@ -1,0 +1,5 @@
+<a>
+  <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true"></span>
+  <span *ngIf="!loggedIn">sign in</span>
+  <span *ngIf="loggedIn && loggedInUser">{{loggedInUser.full_name}}</span>
+</a>
