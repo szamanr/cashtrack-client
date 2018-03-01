@@ -1,8 +1,9 @@
-<p-table [value]="items" id="items-list" class="table table-responsive-sm">
+<p-table [value]="items" id="items-list" [responsive]="true">
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of cols">
+      <th *ngFor="let col of cols" [pSortableColumn]="col.field">
         {{col.header}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
     </tr>
   </ng-template>
@@ -92,9 +93,9 @@
       </td>
 
       <!-- remove item -->
-      <td>
-        <a class="button action-button" (click)="itemService.delete(item)" label="delete">
-          <span class="oi oi-x" title="delete item" aria-hidden="true"></span>
+      <td class="table-button-container">
+        <a class="button" (click)="itemService.delete(item)" label="delete">
+          <span class="oi oi-trash" title="delete item" aria-hidden="true"></span>
         </a>
       </td>
     </tr>
