@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-menu',
@@ -10,13 +11,16 @@ export class UserMenuComponent implements OnInit {
   loggedIn: boolean;
   loggedInUser: Object;
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
   }
 
   ngOnInit() {
     // TODO: check if we are logged in
-    this.loggedIn = false;
+    this.loggedIn = true;
     this.loggedInUser = {full_name: 'user123'};
   }
 
+  openUserMenu(content) {
+    this.modalService.open(content);
+  }
 }

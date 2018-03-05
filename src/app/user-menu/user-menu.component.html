@@ -1,4 +1,33 @@
-<a>
+<!-- user menu modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">user menu</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- for logged-in user -->
+  <div class="modal-body" *ngIf="loggedIn && loggedInUser">
+    <p>
+      <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true">
+        <!-- TODO: replace this with profile photo -->
+      </span>
+      <span>username: {{loggedInUser.full_name}}</span>
+    </p>
+    <p></p>
+  </div>
+
+  <!-- for guest -->
+  <div class="modal-body" *ngIf="!loggedIn">
+    you can log in now!
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<!-- user menu trigger -->
+<a class="button" (click)="openUserMenu(content)">
   <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true"></span>
   <span *ngIf="!loggedIn">sign in</span>
   <span *ngIf="loggedIn && loggedInUser">{{loggedInUser.full_name}}</span>
