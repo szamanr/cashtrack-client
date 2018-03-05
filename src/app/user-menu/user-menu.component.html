@@ -8,13 +8,16 @@
   </div>
   <!-- for logged-in user -->
   <div class="modal-body" *ngIf="loggedIn && loggedInUser">
-    <p>
-      <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true">
-        <!-- TODO: replace this with profile photo -->
-      </span>
-      <span>username: {{loggedInUser.full_name}}</span>
-    </p>
-    <p></p>
+    <form #usernameForm="ngForm">
+      <div>
+        <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true">
+          <!-- TODO: replace this with profile photo -->
+        </span>
+        <span contenteditable="true" name="myFormName" [(ngModel)]="loggedInUser.full_name">
+          username: {{loggedInUser.full_name}}
+        </span>
+      </div>
+    </form>
   </div>
 
   <!-- for guest -->
