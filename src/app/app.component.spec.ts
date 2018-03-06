@@ -1,8 +1,11 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AppComponent} from './app.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ItemService} from '../api/item.service';
+import {UserMenuComponent} from './user-menu/user-menu.component';
+import {FormsModule} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -12,10 +15,13 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        UserMenuComponent
       ],
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        NgbModule.forRoot(),
+        FormsModule
       ],
       providers: [
         ItemService

@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserMenuComponent } from './user-menu.component';
+import {UserMenuComponent} from './user-menu.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {FormsModule} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('UserMenuComponent', () => {
   let component: UserMenuComponent;
@@ -8,9 +11,15 @@ describe('UserMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserMenuComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        UserMenuComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        NgbModule.forRoot(),
+        FormsModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
