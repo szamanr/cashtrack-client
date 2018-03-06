@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../api/user';
 
@@ -15,6 +15,7 @@ export class UserMenuComponent implements OnInit {
   username: FormControl;
   password: FormControl;
   email: FormControl;
+  modal: NgbModalRef;
 
   constructor(private modalService: NgbModal) {
   }
@@ -22,7 +23,7 @@ export class UserMenuComponent implements OnInit {
   ngOnInit() {
     // TODO: check if we are logged in
     this.loggedIn = true;
-    this.loggedInUser = new User('user123');
+    this.loggedInUser = new User('user123', '123qweasd');
 
     // build user form
     this.setupFormControls();
@@ -30,7 +31,7 @@ export class UserMenuComponent implements OnInit {
   }
 
   openUserMenu(content) {
-    this.modalService.open(content);
+    this.modal = this.modalService.open(content);
   }
 
   /**
@@ -59,5 +60,17 @@ export class UserMenuComponent implements OnInit {
       password: this.password,
       email: this.email
     });
+  }
+
+  /**
+   * logs out the current user
+   */
+  public logout() {
+    // log out
+    this.loggedInUser = null;
+    this.loggedIn = false;
+
+    // close user menu
+    this.modal.close();
   }
 }

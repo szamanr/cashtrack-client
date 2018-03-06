@@ -77,7 +77,8 @@
   </div>
 
   <div class="modal-footer">
-    <!--<button type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>-->
+    <button *ngIf="loggedIn" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
+    <button *ngIf="!loggedIn" type="button" class="btn btn-outline-dark" (click)="logout()">log in</button>
   </div>
 </ng-template>
 
