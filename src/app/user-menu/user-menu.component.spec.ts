@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UserMenuComponent} from './user-menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('UserMenuComponent', () => {
@@ -17,7 +17,8 @@ describe('UserMenuComponent', () => {
       imports: [
         RouterTestingModule,
         NgbModule.forRoot(),
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
       ]
     }).compileComponents();
   }));

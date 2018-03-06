@@ -4,7 +4,7 @@ import {AppComponent} from './app.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ItemService} from '../api/item.service';
 import {UserMenuComponent} from './user-menu/user-menu.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('AppComponent', () => {
@@ -21,7 +21,8 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         NgbModule.forRoot(),
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
       ],
       providers: [
         ItemService

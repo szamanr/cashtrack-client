@@ -6,7 +6,7 @@ import {CashTableComponent} from './cash-table/cash-table.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ItemService} from '../api/item.service';
 import {TableModule} from 'primeng/table';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CurrencyService} from '../api/currency.service';
 import {AccountService} from '../api/account.service';
 import {UserMenuComponent} from './user-menu/user-menu.component';
@@ -18,7 +18,8 @@ import {ContenteditableDirective} from '../../node_modules/ng-contenteditable/sr
     AppRoutingModule,
     NgbModule.forRoot(),
     TableModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     // app components

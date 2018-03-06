@@ -4,6 +4,15 @@ a.button {
   cursor: pointer;
 }
 
+input {
+  &.ng-valid {
+    border-color: #008000;
+  }
+  &.ng-invalid {
+    border-color: #800000;
+  }
+}
+
 // on larger screens, offset the app main page to make space for vertical navigation bar
 @media screen and (min-width: @sm) {
   body {

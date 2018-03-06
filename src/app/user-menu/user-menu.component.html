@@ -8,14 +8,49 @@
   </div>
   <!-- for logged-in user -->
   <div class="modal-body" *ngIf="loggedIn && loggedInUser">
-    <form #usernameForm="ngForm">
-      <div>
+    <form [formGroup]="usernameForm">
+      <!-- username -->
+      <div class="form-group"
+           [ngClass]="{
+        'has-danger': username.invalid && (username.dirty || username.touched),
+        'has-success': username.valid && (username.dirty || username.touched)
+      }">
         <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true">
           <!-- TODO: replace this with profile photo -->
         </span>
-        <span contenteditable="true" name="myFormName" [(ngModel)]="loggedInUser.full_name">
-          username: {{loggedInUser.full_name}}
+        <label>username: </label>
+        <input type="text"
+               class="form-control"
+               formControlName="username"
+               [(ngModel)]="loggedInUser.full_name"
+               required>
+        <div class="form-control-feedback"
+             *ngIf="username.errors && (username.dirty || username.touched)">
+          <p *ngIf="username.errors.required">username is required</p>
+          <!-- TODO: message if min length not reached -->
+        </div>
+      </div>
+
+      <!-- password -->
+      <div class="form-group"
+           [ngClass]="{
+        'has-danger': password.invalid && (password.dirty || password.touched),
+        'has-success': password.valid && (password.dirty || password.touched)
+      }">
+        <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true">
+          <!-- TODO: replace this with profile photo -->
         </span>
+        <label>password: </label>
+        <input type="password"
+               class="form-control"
+               formControlName="password"
+               [(ngModel)]="loggedInUser.password"
+               required>
+        <div class="form-control-feedback"
+             *ngIf="password.errors && (password.dirty || password.touched)">
+          <p *ngIf="password.errors.required">password is required</p>
+          <!-- TODO: message if min length not reached -->
+        </div>
       </div>
     </form>
   </div>
