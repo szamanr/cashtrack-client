@@ -10,7 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {CurrencyService} from '../api/currency.service';
 import {AccountService} from '../api/account.service';
 import {UserMenuComponent} from './user-menu/user-menu.component';
-import {ContenteditableDirective} from 'ng-contenteditable/dist';
+import {ContenteditableDirective} from '../../node_modules/ng-contenteditable/src/index';
 
 @NgModule({
   imports: [
