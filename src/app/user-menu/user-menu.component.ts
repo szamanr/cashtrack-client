@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from '../../api/user';
 
 @Component({
   selector: 'app-user-menu',
@@ -9,10 +10,11 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class UserMenuComponent implements OnInit {
   loggedIn: boolean;
-  loggedInUser: Object;
-  private usernameForm: FormGroup;
-  private username: FormControl;
-  private password: FormControl;
+  loggedInUser: User;
+  usernameForm: FormGroup;
+  username: FormControl;
+  password: FormControl;
+  email: FormControl;
 
   constructor(private modalService: NgbModal) {
   }
@@ -20,7 +22,7 @@ export class UserMenuComponent implements OnInit {
   ngOnInit() {
     // TODO: check if we are logged in
     this.loggedIn = true;
-    this.loggedInUser = {full_name: 'user123', password: 'ppppppppp'};
+    this.loggedInUser = new User('user123');
 
     // build user form
     this.setupFormControls();
@@ -40,8 +42,10 @@ export class UserMenuComponent implements OnInit {
       Validators.minLength(3)
     ]);
     this.password = new FormControl('', [
-      Validators.required,
       Validators.minLength(8)
+    ]);
+    this.email = new FormControl('', [
+      Validators.email
     ]);
   }
 
@@ -52,7 +56,8 @@ export class UserMenuComponent implements OnInit {
   private buildForm() {
     return new FormGroup({
       username: this.username,
-      password: this.password
+      password: this.password,
+      email: this.email
     });
   }
 }
