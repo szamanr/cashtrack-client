@@ -3,6 +3,14 @@
 import {Item} from './api/item';
 import {Currency} from './api/currency';
 import {Account} from './api/account';
+import {User} from './api/user';
+
+export const USERS: User[] = [
+  new User('user1', '123qweasd', 'user1@example.com', 1),
+  new User('user2', '123qweasd', 'user2@example.com', 2),
+  new User('user3', '123qweasd', 'user3@example.com', 3),
+  new User('user4', '123qweasd', 'user4@example.com', 4)
+];
 
 export const CURRENCIES: Currency[] = [
   new Currency('€', 'EUR', 'euro'),
