@@ -5,6 +5,7 @@ export class Item {
   static defaultCurrency = '€';
 
   id: number;
+  user: number; // foreign id
   date: Date;
   amount: number;
   currency: string; // foreign id
@@ -12,8 +13,9 @@ export class Item {
   category: string; // foreign id
   account: string; // foreign id (account type)
 
-  constructor(date: Date = new Date, amount: number = 0, currency: string = '', content: string = '',
+  constructor(user: number, date: Date = new Date, amount: number = 0, currency: string = '', content: string = '',
               category: string = '', account: string = '', id?: number) {
+    this.user = user;
     this.date = date;
     this.amount = amount;
     this.currency = currency || Item.defaultCurrency;
