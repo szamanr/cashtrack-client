@@ -11,7 +11,8 @@ import {User} from '../../api/user';
 export class UserMenuComponent implements OnInit {
   loggedIn: boolean;
   loggedInUser: User;
-  usernameForm: FormGroup;
+  newUser = new User('');
+  userForm: FormGroup;
   username: FormControl;
   password: FormControl;
   email: FormControl;
@@ -21,13 +22,13 @@ export class UserMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.loggedInUser = new User('user123', '123qweasd', 'user123@example.com');
     // TODO: check if we are logged in
-    this.loggedIn = true;
-    this.loggedInUser = new User('user123', '123qweasd');
+    this.loggedIn = typeof this.loggedInUser !== 'undefined';
 
     // build user form
     this.setupFormControls();
-    this.usernameForm = this.buildForm();
+    this.userForm = this.buildForm();
   }
 
   openUserMenu(content) {
@@ -69,6 +70,22 @@ export class UserMenuComponent implements OnInit {
     // log out
     this.loggedInUser = null;
     this.loggedIn = false;
+
+    // close user menu
+    this.modal.close();
+  }
+
+  /**
+   * registers new user
+   */
+  createUser() {
+    // send new user details to server
+    console.log('creating user: ', this.newUser);
+
+    // set currently logged in user
+    this.loggedInUser = this.newUser;
+    this.newUser = new User('');
+    this.loggedIn = true; // TODO: auto-update
 
     // close user menu
     this.modal.close();

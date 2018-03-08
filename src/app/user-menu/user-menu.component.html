@@ -6,9 +6,10 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <!-- for logged-in user -->
-  <div class="modal-body" *ngIf="loggedIn && loggedInUser">
-    <form [formGroup]="usernameForm">
+
+  <form (ngSubmit)="createUser()" #newUserForm="ngForm" [formGroup]="userForm">
+    <!-- for logged-in user -->
+    <div class="modal-body" *ngIf="loggedIn && loggedInUser">
       <!-- id -->
       <p>id: {{loggedInUser.id}}</p>
 
@@ -68,18 +69,38 @@
              *ngIf="email.errors && (email.dirty || email.touched)">
         </div>
       </div>
-    </form>
-  </div>
+    </div>
 
-  <!-- for guest -->
-  <div class="modal-body" *ngIf="!loggedIn">
-    you can log in now!
-  </div>
+    <!-- for guest -->
+    <div class="modal-body" *ngIf="!loggedIn">
+      <!-- username -->
+      <div class="form-group"
+           [ngClass]="{
+        'has-danger': username.invalid && (username.dirty || username.touched),
+        'has-success': username.valid && (username.dirty || username.touched)
+      }">
+        <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true"></span>
+        <label for="username">username: </label>
+        <input type="text"
+               class="form-control"
+               formControlName="username"
+               id="username"
+               [(ngModel)]="newUser.username"
+               required>
+        <div class="form-control-feedback"
+             *ngIf="username.errors && (username.dirty || username.touched)">
+          <p *ngIf="username.errors.required">username is required</p>
+          <!-- TODO: message if min length not reached -->
+        </div>
+      </div>
+    </div>
 
-  <div class="modal-footer">
-    <button *ngIf="loggedIn" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
-    <button *ngIf="!loggedIn" type="button" class="btn btn-outline-dark" (click)="logout()">log in</button>
-  </div>
+    <!-- action buttons -->
+    <div class="modal-footer">
+      <button *ngIf="loggedIn" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
+      <button *ngIf="!loggedIn" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
+    </div>
+  </form>
 </ng-template>
 
 <!-- user menu trigger -->
