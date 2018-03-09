@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Item} from './item';
 import {ITEMS} from '../mock.data';
+import {User} from './user';
 
 @Injectable()
 export class ItemService {
@@ -14,8 +15,11 @@ export class ItemService {
    * fetches an array of items
    * @returns {Promise<Item[]>}
    */
-  getAll(): Promise<Item[]> {
-    return Promise.resolve(this.items);
+  getAll(owner: User): Promise<Item[]> {
+    const ownerId = owner ? owner.id : null;
+    return Promise.resolve(this.items.filter((item) => {
+      return item.user === ownerId;
+    }));
   }
 
   /**

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Item} from '../../api/item';
 import {ItemService} from '../../api/item.service';
 import {Account} from '../../api/account';
@@ -39,7 +39,7 @@ export class CashTableComponent implements OnInit {
 
   ngOnInit() {
     // fetch data
-    this.itemService.getAll()
+    this.itemService.getAll(this.appService.user)
       .then(items => this.items = items);
     this.currencyService.getAll()
       .then(currencies => this.currencies = currencies);

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import {CashTableComponent} from './cash-table.component';
 import {ItemService} from '../../api/item.service';
@@ -7,12 +7,14 @@ import {TableModule} from 'primeng/table';
 import {CurrencyService} from '../../api/currency.service';
 import {AccountService} from '../../api/account.service';
 import {AppService} from '../app.service';
+import {USERS} from '../../mock.data';
 
 describe('CashTableComponent', () => {
   let component: CashTableComponent;
   let fixture: ComponentFixture<CashTableComponent>;
   let compiled;
   let table: Element;
+  let appService: AppService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,13 +26,16 @@ describe('CashTableComponent', () => {
       .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(inject([AppService], (service) => {
+    appService = service;
+    appService.user = USERS[0];
+
     fixture = TestBed.createComponent(CashTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     compiled = fixture.debugElement.nativeElement;
     table = compiled.querySelector('table');
-  });
+  }));
 
   it('should be created', () => {
     expect(component).toBeTruthy();
