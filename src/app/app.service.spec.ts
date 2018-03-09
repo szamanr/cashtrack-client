@@ -3,13 +3,23 @@ import { TestBed, inject } from '@angular/core/testing';
 import { AppService } from './app.service';
 
 describe('AppService', () => {
+  let service: AppService;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [AppService]
     });
   });
 
-  it('should be created', inject([AppService], (service: AppService) => {
-    expect(service).toBeTruthy();
+  beforeEach(inject([AppService], (appService) => {
+    service = appService;
   }));
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should store the current user', () => {
+    expect(service.user).toBeDefined();
+  });
 });
