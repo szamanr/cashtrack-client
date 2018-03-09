@@ -4,6 +4,7 @@ import {UserMenuComponent} from './user-menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AppService} from '../app.service';
 
 describe('UserMenuComponent', () => {
   let component: UserMenuComponent;
@@ -19,7 +20,8 @@ describe('UserMenuComponent', () => {
         NgbModule.forRoot(),
         FormsModule,
         ReactiveFormsModule
-      ]
+      ],
+      providers: [AppService]
     }).compileComponents();
   }));
 

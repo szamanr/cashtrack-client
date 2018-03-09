@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../api/user';
+import {AppService} from '../app.service';
+import {USERS} from '../../mock.data';
 
 @Component({
   selector: 'app-user-menu',
@@ -10,7 +12,6 @@ import {User} from '../../api/user';
 })
 export class UserMenuComponent implements OnInit {
   loggedIn: boolean;
-  loggedInUser: User;
   newUser = new User('');
   userForm: FormGroup;
   username: FormControl;
@@ -18,13 +19,14 @@ export class UserMenuComponent implements OnInit {
   email: FormControl;
   modal: NgbModalRef;
 
-  constructor(private modalService: NgbModal) {
+  constructor(public appService: AppService,
+              private modalService: NgbModal) {
   }
 
   ngOnInit() {
-    // this.loggedInUser = new User('user123', '123qweasd', 'user123@example.com');
+    this.appService.user = USERS[0];
     // TODO: check if we are logged in
-    this.loggedIn = typeof this.loggedInUser !== 'undefined';
+    this.loggedIn = typeof this.appService.user !== 'undefined';
 
     // build user form
     this.setupFormControls();
@@ -68,7 +70,7 @@ export class UserMenuComponent implements OnInit {
    */
   public logout() {
     // log out
-    this.loggedInUser = null;
+    this.appService.user = null;
     this.loggedIn = false;
 
     // close user menu
@@ -83,7 +85,7 @@ export class UserMenuComponent implements OnInit {
     console.log('creating user: ', this.newUser);
 
     // set currently logged in user
-    this.loggedInUser = this.newUser;
+    this.appService.user = this.newUser;
     this.newUser = new User('');
     this.loggedIn = true; // TODO: auto-update
 

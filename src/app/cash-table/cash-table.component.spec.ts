@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {CurrencyService} from '../../api/currency.service';
 import {AccountService} from '../../api/account.service';
+import {AppService} from '../app.service';
 
 describe('CashTableComponent', () => {
   let component: CashTableComponent;
@@ -16,7 +17,7 @@ describe('CashTableComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CashTableComponent],
-      providers: [ItemService, CurrencyService, AccountService],
+      providers: [AppService, ItemService, CurrencyService, AccountService],
       imports: [TableModule,
         FormsModule]
     })

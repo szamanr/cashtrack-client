@@ -9,9 +9,9 @@
 
   <form (ngSubmit)="createUser()" #newUserForm="ngForm" [formGroup]="userForm">
     <!-- for logged-in user -->
-    <div class="modal-body" *ngIf="loggedIn && loggedInUser">
+    <div class="modal-body" *ngIf="loggedIn && appService.user">
       <!-- id -->
-      <p>id: {{loggedInUser.id}}</p>
+      <p>id: {{appService.user.id}}</p>
 
       <!-- username -->
       <div class="form-group"
@@ -26,7 +26,7 @@
         <input type="text"
                class="form-control"
                formControlName="username"
-               [(ngModel)]="loggedInUser.username"
+               [(ngModel)]="appService.user.username"
                required>
         <div class="form-control-feedback"
              *ngIf="username.errors && (username.dirty || username.touched)">
@@ -45,7 +45,7 @@
         <input type="password"
                class="form-control"
                formControlName="password"
-               [(ngModel)]="loggedInUser.password"
+               [(ngModel)]="appService.user.password"
                required>
         <div class="form-control-feedback"
              *ngIf="password.errors && (password.dirty || password.touched)">
@@ -63,7 +63,7 @@
         <input type="email"
                class="form-control"
                formControlName="email"
-               [(ngModel)]="loggedInUser.email"
+               [(ngModel)]="appService.user.email"
                required>
         <div class="form-control-feedback"
              *ngIf="email.errors && (email.dirty || email.touched)">
@@ -107,5 +107,5 @@
 <a class="button" (click)="openUserMenu(content)">
   <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true"></span>
   <span *ngIf="!loggedIn">sign in</span>
-  <span *ngIf="loggedIn && loggedInUser">{{loggedInUser.username}}</span>
+  <span *ngIf="loggedIn && appService.user">{{appService.user.username}}</span>
 </a>

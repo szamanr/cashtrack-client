@@ -22,7 +22,7 @@ export class ItemService {
    * adds a new item
    */
   insert(): Promise<Item> {
-    const item = new Item();
+    const item = new Item(1);
     this.items.push(item);
     return Promise.resolve(item);
   }

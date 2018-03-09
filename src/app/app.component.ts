@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {ItemService} from '../api/item.service';
+import {AppService} from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import {ItemService} from '../api/item.service';
 export class AppComponent {
   title = 'cashtrack';
 
-  constructor(private itemService: ItemService) {
+  constructor(private appService: AppService,
+              private itemService: ItemService) {
+    this.title = appService.appTitle;
   }
 
   addItem() {

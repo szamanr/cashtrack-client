@@ -6,6 +6,7 @@ import {ItemService} from '../api/item.service';
 import {UserMenuComponent} from './user-menu/user-menu.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AppService} from './app.service';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -25,6 +26,7 @@ describe('AppComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
+        AppService,
         ItemService
       ]
     }).compileComponents();
