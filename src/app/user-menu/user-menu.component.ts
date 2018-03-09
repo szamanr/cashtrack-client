@@ -78,6 +78,18 @@ export class UserMenuComponent implements OnInit {
   }
 
   /**
+   * logs in selected user
+   * @param {User} user
+   */
+  public login(user: User) {
+    this.appService.user = user;
+    this.loggedIn = true;
+
+    // close user menu
+    this.modal.close();
+  }
+
+  /**
    * registers new user
    */
   createUser() {
