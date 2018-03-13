@@ -9,7 +9,7 @@
 
   <form (ngSubmit)="createUser()" #newUserForm="ngForm" [formGroup]="userForm">
     <!-- for logged-in user -->
-    <div class="modal-body" *ngIf="loggedIn && appService.user">
+    <div class="modal-body" *ngIf="appService.user">
       <!-- id -->
       <p>id: {{appService.user.id}}</p>
 
@@ -72,7 +72,7 @@
     </div>
 
     <!-- for guest -->
-    <div class="modal-body" *ngIf="!loggedIn">
+    <div class="modal-body" *ngIf="!appService.user">
       <!-- username -->
       <div class="form-group"
            [ngClass]="{
@@ -97,8 +97,8 @@
 
     <!-- action buttons -->
     <div class="modal-footer">
-      <button *ngIf="loggedIn" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
-      <button *ngIf="!loggedIn" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
+      <button *ngIf="appService.user" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
+      <button *ngIf="!appService.user" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
     </div>
   </form>
 </ng-template>
@@ -106,6 +106,6 @@
 <!-- user menu trigger -->
 <a class="button" (click)="openUserMenu(content)">
   <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true"></span>
-  <span *ngIf="!loggedIn">sign in</span>
-  <span *ngIf="loggedIn && appService.user">{{appService.user.username}}</span>
+  <span *ngIf="!appService.user">sign in</span>
+  <span *ngIf="appService.user">{{appService.user.username}}</span>
 </a>

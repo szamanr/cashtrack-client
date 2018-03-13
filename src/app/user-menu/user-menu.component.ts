@@ -25,8 +25,6 @@ export class UserMenuComponent implements OnInit {
 
   ngOnInit() {
     this.appService.setUser(USERS[0]);
-    // TODO: check if we are logged in
-    this.loggedIn = typeof this.appService.user !== 'undefined';
 
     // build user form
     this.setupFormControls();
@@ -71,7 +69,6 @@ export class UserMenuComponent implements OnInit {
   public logout() {
     // log out
     this.appService.setUser(null);
-    this.loggedIn = false;
 
     // close user menu
     this.modal.close();
@@ -83,7 +80,6 @@ export class UserMenuComponent implements OnInit {
    */
   public login(user: User) {
     this.appService.setUser(user);
-    this.loggedIn = true;
 
     // close user menu
     this.modal.close();
@@ -108,7 +104,6 @@ export class UserMenuComponent implements OnInit {
     // set currently logged in user
     this.appService.setUser(this.newUser);
     this.newUser = new User('');
-    this.loggedIn = true; // TODO: auto-update
 
     // close user menu
     this.modal.close();
