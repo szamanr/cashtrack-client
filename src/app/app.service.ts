@@ -11,6 +11,7 @@ export class AppService {
   items$: Observable<Item[]>;
   private items: Item[];
   private allItems: Item[] = ITEMS;
+  private userId: number;
 
   constructor() {
     this.items$ = new Observable<Item[]>((observer) => {
@@ -26,11 +27,11 @@ export class AppService {
   setUser(user: User) {
     // set current user
     this.user = user;
+    this.userId = user ? user.id : null;
 
     // get items belonging to logged in user
-    const ownerId = user ? user.id : null;
     this.items = this.allItems.filter((item) => {
-      return item.user === ownerId;
+      return item.user === this.userId;
     });
   }
 
@@ -38,7 +39,7 @@ export class AppService {
    * adds a new item
    */
   insertItem(): Promise<Item> {
-    const item = new Item(1);
+    const item = new Item(this.userId);
     this.items.push(item);
     return Promise.resolve(item);
   }
