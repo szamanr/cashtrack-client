@@ -10,10 +10,13 @@ export class AppService {
   public user: User = null;
   items$: Observable<Item[]>;
   private items: Item[];
-  private allItems: Item[] = ITEMS;
+  private allItems: Item[];
   private userId: number;
 
   constructor() {
+    // fetch items from server
+    this.allItems = ITEMS;
+
     this.items$ = new Observable<Item[]>((observer) => {
       // observer.next(this.items);
       setInterval(() => observer.next(this.items), 1000);
@@ -30,17 +33,22 @@ export class AppService {
     this.userId = user ? user.id : null;
 
     // get items belonging to logged in user
-    this.items = this.allItems.filter((item) => {
-      return item.user === this.userId;
-    });
+    this.setItemsForCurrentUser();
   }
 
   /**
    * adds a new item
    */
   insertItem(): Promise<Item> {
+    // create empty item
     const item = new Item(this.userId);
-    this.items.push(item);
+
+    // send item to server
+    this.allItems.push(item);
+
+    // update current items
+    this.setItemsForCurrentUser();
+
     return Promise.resolve(item);
   }
 
@@ -50,6 +58,19 @@ export class AppService {
    * @returns {null}
    */
   deleteItem(item: Item): void {
-    this.items.splice(this.items.indexOf(item), 1);
+    // send remove request to server
+    this.allItems.splice(this.allItems.indexOf(item), 1);
+
+    // update current items
+    this.setItemsForCurrentUser();
+  }
+
+  /**
+   * loads items belonging to current user
+   */
+  private setItemsForCurrentUser() {
+    this.items = this.allItems.filter((item) => {
+      return item.user === this.userId;
+    });
   }
 }
