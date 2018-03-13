@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from '../../api/item';
-import {ItemService} from '../../api/item.service';
 import {Account} from '../../api/account';
 import {Currency} from '../../api/currency';
 import {CurrencyService} from '../../api/currency.service';
@@ -18,7 +17,6 @@ export class CashTableComponent implements OnInit {
   accounts: Account[] = [];
   currencies: Currency[] = [];
   appService: AppService;
-  itemService: ItemService;
   currencyService: CurrencyService;
 
   accountService: AccountService;
@@ -29,11 +27,9 @@ export class CashTableComponent implements OnInit {
   };*/
 
   constructor(appService: AppService,
-              itemService: ItemService,
               currencyService: CurrencyService,
               accountService: AccountService) {
     this.appService = appService;
-    this.itemService = itemService;
     this.currencyService = currencyService;
     this.accountService = accountService;
   }

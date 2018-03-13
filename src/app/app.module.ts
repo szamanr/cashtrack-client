@@ -4,7 +4,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
 import {CashTableComponent} from './cash-table/cash-table.component';
 import {AppRoutingModule} from './app-routing.module';
-import {ItemService} from '../api/item.service';
 import {TableModule} from 'primeng/table';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CurrencyService} from '../api/currency.service';
@@ -33,7 +32,6 @@ import {AppService} from './app.service';
   ],
   providers: [
     AppService,
-    ItemService,
     CurrencyService,
     AccountService
   ],

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {ItemService} from '../api/item.service';
 import {AppService} from './app.service';
 
 @Component({
@@ -10,8 +9,7 @@ import {AppService} from './app.service';
 export class AppComponent {
   title = 'cashtrack';
 
-  constructor(private appService: AppService,
-              private itemService: ItemService) {
+  constructor(private appService: AppService) {
     this.title = appService.appTitle;
   }
 

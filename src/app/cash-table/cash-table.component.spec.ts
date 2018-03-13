@@ -1,7 +1,6 @@
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import {CashTableComponent} from './cash-table.component';
-import {ItemService} from '../../api/item.service';
 import {FormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {CurrencyService} from '../../api/currency.service';
@@ -19,7 +18,7 @@ describe('CashTableComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CashTableComponent],
-      providers: [AppService, ItemService, CurrencyService, AccountService],
+      providers: [AppService, CurrencyService, AccountService],
       imports: [TableModule,
         FormsModule]
     })

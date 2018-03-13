@@ -2,7 +2,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AppComponent} from './app.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {ItemService} from '../api/item.service';
 import {UserMenuComponent} from './user-menu/user-menu.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +10,6 @@ import {AppService} from './app.service';
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  // let service: ItemService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,7 +25,6 @@ describe('AppComponent', () => {
       ],
       providers: [
         AppService,
-        ItemService
       ]
     }).compileComponents();
   }));
@@ -36,10 +33,6 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
   });
-
-  /*beforeEach(inject([ItemService], (itemService) => {
-    service = itemService;
-  }));*/
 
   it('should create the app', async(() => {
     const app = fixture.debugElement.componentInstance;
