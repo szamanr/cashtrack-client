@@ -6,6 +6,7 @@ import {Currency} from '../../api/currency';
 import {CurrencyService} from '../../api/currency.service';
 import {AccountService} from '../../api/account.service';
 import {AppService} from '../app.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-cash-table.page',
@@ -13,7 +14,7 @@ import {AppService} from '../app.service';
   styleUrls: ['./cash-table.component.less']
 })
 export class CashTableComponent implements OnInit {
-  items: Item[] = [];
+  items: Observable<Item[]>;
   accounts: Account[] = [];
   currencies: Currency[] = [];
   appService: AppService;
@@ -39,8 +40,7 @@ export class CashTableComponent implements OnInit {
 
   ngOnInit() {
     // fetch data
-    this.itemService.getAll(this.appService.user)
-      .then(items => this.items = items);
+    this.items = this.appService.items$;
     this.currencyService.getAll()
       .then(currencies => this.currencies = currencies);
     this.accountService.getAll()

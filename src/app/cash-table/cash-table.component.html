@@ -1,4 +1,4 @@
-<p-table [value]="items" id="items-list" [responsive]="true" [paginator]="true" [rows]="rowsPerPage">
+<p-table [value]="items | async" id="items-list" [responsive]="true" [paginator]="true" [rows]="rowsPerPage">
   <ng-template pTemplate="header">
     <tr>
       <th *ngFor="let col of cols" [pSortableColumn]="col.field">
@@ -97,7 +97,7 @@
 
       <!-- remove item -->
       <td class="table-button-container">
-        <a class="button" (click)="itemService.delete(item)" label="delete">
+        <a class="button" (click)="appService.deleteItem(item)" label="delete">
           <span class="oi oi-trash" title="delete item" aria-hidden="true"></span>
         </a>
       </td>
