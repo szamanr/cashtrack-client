@@ -93,8 +93,17 @@ export class UserMenuComponent implements OnInit {
    * registers new user
    */
   createUser() {
+    // if user with chosen username exists, log in
+    const existingUser = USERS.find((user) => {
+      return user.username === this.newUser.username;
+    });
+    if (existingUser) {
+      this.login(existingUser);
+      return;
+    }
+
     // send new user details to server
-    console.log('creating user: ', this.newUser);
+    // console.log('creating user: ', this.newUser);
 
     // set currently logged in user
     this.appService.user = this.newUser;
