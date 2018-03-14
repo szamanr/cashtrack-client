@@ -53,14 +53,11 @@ describe('CashTableComponent', () => {
   // TODO: UI testing
   // it('the table should scroll on mobile', () => {});
 
-  it('should fetch items', () => {
-    expect(component.items).toBeDefined();
-    expect(component.items.length).toEqual(0);
-
-    fixture.whenStable().then(() => {
-      expect(component.items.length).toBeGreaterThan(0);
+  it('should fetch items', async(() => {
+    component.items.toPromise().then(result => {
+      expect(result.length).toBeGreaterThan(0);
     });
-  });
+  }));
 
   it('should display fetched items in a table', () => {
     fixture.whenStable().then(() => {
@@ -69,12 +66,15 @@ describe('CashTableComponent', () => {
     });
   });
 
-  it('each item should be displayed in a single row', () => {
+  it('each item should be displayed in a single row', async(() => {
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      expect(table.querySelector('tbody').querySelectorAll('tr').length).toEqual(component.items.length);
+      component.items.toPromise().then(result => {
+        expect(result.length).toBeGreaterThan(0);
+        expect(table.querySelector('tbody').querySelectorAll('tr').length).toEqual(result.length);
+      });
     });
-  });
+  }));
 
   /*it('the table items should be editable in-place', () => {
     fixture.whenStable().then(() => {
@@ -92,6 +92,7 @@ describe('CashTableComponent', () => {
     });
   });
 
+  /*
   it('should fetch available currencies', () => {
     expect(component.currencies).toBeDefined();
     expect(component.currencies.length).toEqual(0);
@@ -99,5 +100,5 @@ describe('CashTableComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.currencies.length).toBeGreaterThan(0);
     });
-  });
+  });*/
 });
