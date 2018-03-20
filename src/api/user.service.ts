@@ -11,14 +11,13 @@ export class UserService {
   }
 
   /**
-   * checks if username exists in the database
+   * checks if username exists in the database. returns the found user.
    * @param {string} username
-   * @returns {boolean}
+   * @returns {User}
    */
-  checkUsername(username: string) {
-    const user = this.users.find((element) => {
+  checkUsername(username: string): User {
+    return this.users.find((element) => {
       return element.username === username;
     });
-    return !!user;
   }
 }

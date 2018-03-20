@@ -12,13 +12,13 @@ import {UserService} from '../../api/user.service';
   styleUrls: ['./user-menu.component.less']
 })
 export class UserMenuComponent implements OnInit {
-  newUser = new User('');
+  formUser = new User('');
   userForm: FormGroup;
   username: FormControl;
   password: FormControl;
   email: FormControl;
   modal: NgbModalRef;
-  usernameTaken = false;
+  foundUser: User;
 
   constructor(public app: AppService,
               private userService: UserService,
@@ -68,37 +68,13 @@ export class UserMenuComponent implements OnInit {
    */
   // TODO: refactor
   createUser() {
-    // if user with chosen username exists, log in
-    const existingUser = USERS.find((user) => {
-      return user.username === this.newUser.username;
-    });
-    if (existingUser) {
-      // check password
-      if (this.newUser.password === existingUser.password) {
-        this.login(existingUser);
-
-        // close user menu
-        if (this.modal) {
-          this.modal.close();
-        }
-      } else {
-        this.password.setErrors({'mismatch': true, 'invalid': true});
-      }
-
-      return;
-    }
-
     // send new user details to server
     // console.log('creating user: ', this.newUser);
+    this.userService.users.push(this.formUser);
 
     // set currently logged in user
-    this.app.setUser(this.newUser);
-    this.newUser = new User('');
-
-    // close user menu
-    if (this.modal) {
-      this.modal.close();
-    }
+    this.app.setUser(this.formUser);
+    this.formUser = new User('');
   }
 
   /**
@@ -108,8 +84,35 @@ export class UserMenuComponent implements OnInit {
   onUsernameChanged(event: any) {
     // check if username is already taken
     const username = event.target.value;
-    this.usernameTaken = this.userService.checkUsername(username);
+    this.foundUser = this.userService.checkUsername(username);
     // this.username.setErrors({'taken': this.usernameTaken});
+  }
+
+  /**
+   * creates a new user or logs in an existing user after user form submitted.
+   */
+  onUserFormSubmitted() {
+    if (this.foundUser) {
+      // check password
+      if (this.formUser.password === this.foundUser.password) {
+        this.login(this.foundUser);
+
+        // close user menu
+        if (this.modal) {
+          this.modal.close();
+        }
+      } else {
+        this.password.setErrors({'mismatch': true, 'invalid': true});
+      }
+    } else {
+      // create new user
+      this.createUser();
+
+      // close user menu
+      if (this.modal) {
+        this.modal.close();
+      }
+    }
   }
 
   /**

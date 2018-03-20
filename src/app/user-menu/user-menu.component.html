@@ -7,7 +7,7 @@
     </button>
   </div>
 
-  <form (ngSubmit)="createUser()" #newUserForm="ngForm" [formGroup]="userForm">
+  <form (ngSubmit)="onUserFormSubmitted()" #newUserForm="ngForm" [formGroup]="userForm">
     <!-- for logged-in user -->
     <div class="modal-body" *ngIf="app.user">
       <!-- id -->
@@ -86,18 +86,18 @@
                class="form-control"
                formControlName="username"
                id="username"
-               [(ngModel)]="newUser.username"
+               [(ngModel)]="formUser.username"
                required>
         <div class="form-control-feedback"
              *ngIf="username.errors && (username.dirty || username.touched)">
           <p *ngIf="username.errors.required">username is required</p>
           <!-- TODO: message if min length not reached -->
         </div>
-        <p *ngIf="usernameTaken">username is taken</p>
+        <p *ngIf="foundUser">username is taken</p>
       </div>
 
       <!-- password -->
-      <div class="form-group" *ngIf="usernameTaken"
+      <div class="form-group" *ngIf="foundUser"
            [ngClass]="{
         'has-danger': password.invalid && (password.dirty || password.touched),
         'has-success': password.valid && (password.dirty || password.touched)
@@ -106,7 +106,7 @@
         <input type="password"
                class="form-control"
                formControlName="password"
-               [(ngModel)]="newUser.password"
+               [(ngModel)]="formUser.password"
                required>
         <div class="form-control-feedback"
              *ngIf="password.errors && (password.dirty || password.touched)">
@@ -120,10 +120,10 @@
     <!-- action buttons -->
     <div class="modal-footer">
       <button *ngIf="app.user" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
-      <button *ngIf="!app.user && usernameTaken" type="submit" class="btn btn-success"
+      <button *ngIf="!app.user && foundUser" type="submit" class="btn btn-success"
               [disabled]="!newUserForm.form.valid">log in
       </button>
-      <button *ngIf="!app.user && !usernameTaken" type="submit" class="btn btn-success"
+      <button *ngIf="!app.user && !foundUser" type="submit" class="btn btn-success"
               [disabled]="!newUserForm.form.valid">sign up
       </button>
     </div>
