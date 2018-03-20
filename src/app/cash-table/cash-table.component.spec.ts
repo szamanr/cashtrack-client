@@ -92,7 +92,6 @@ describe('CashTableComponent', () => {
     });
   });
 
-  /*
   it('should fetch available currencies', () => {
     expect(component.currencies).toBeDefined();
     expect(component.currencies.length).toEqual(0);
@@ -100,5 +99,5 @@ describe('CashTableComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.currencies.length).toBeGreaterThan(0);
     });
-  });*/
+  });
 });

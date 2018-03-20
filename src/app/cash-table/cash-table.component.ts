@@ -13,15 +13,15 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./cash-table.component.less']
 })
 export class CashTableComponent implements OnInit {
-  items: Observable<Item[]>;
-  accounts: Account[] = [];
-  currencies: Currency[] = [];
   app: AppService;
-  currencyService: CurrencyService;
-
-  accountService: AccountService;
   cols: { field: string; header: string }[];
   rowsPerPage: number;
+
+  items: Observable<Item[]>;
+  accounts: Account[] = [];
+  accountService: AccountService;
+  currencies: Currency[] = [];
+  currencyService: CurrencyService;
 
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
