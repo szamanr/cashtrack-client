@@ -27,7 +27,7 @@ describe('AppComponent', () => {
       ],
       providers: [
         AppService,
-        UserService,
+        UserService
       ]
     }).compileComponents();
   }));

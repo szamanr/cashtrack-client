@@ -20,7 +20,7 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('onUsernameChanged method',() => {
+  describe('onUsernameChanged method', () => {
     it('should return true if username exists', () => {
       const user1 = new User('user1');
       service.users.push(user1);

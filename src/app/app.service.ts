@@ -12,13 +12,12 @@ export class AppService {
   config = {
     'production': false,
     'development': true,
-    'title': 'cashtrack',
+    'title': 'cashtrack'
   };
 
   public user: User = null;
-  private userId: number;
-
   items$: Observable<Item[]>;
+  private userId: number;
   private items: Item[];
   private allItems: Item[];
 

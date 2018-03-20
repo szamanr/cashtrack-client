@@ -120,8 +120,12 @@
     <!-- action buttons -->
     <div class="modal-footer">
       <button *ngIf="app.user" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
-      <button *ngIf="!app.user && usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
-      <button *ngIf="!app.user && !usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">sign up</button>
+      <button *ngIf="!app.user && usernameTaken" type="submit" class="btn btn-success"
+              [disabled]="!newUserForm.form.valid">log in
+      </button>
+      <button *ngIf="!app.user && !usernameTaken" type="submit" class="btn btn-success"
+              [disabled]="!newUserForm.form.valid">sign up
+      </button>
     </div>
   </form>
 </ng-template>
