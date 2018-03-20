@@ -38,17 +38,6 @@ export class UserMenuComponent implements OnInit {
   }
 
   /**
-   * logs out the current user
-   */
-  public logout() {
-    // log out
-    this.appService.setUser(null);
-
-    // close user menu
-    this.modal.close();
-  }
-
-  /**
    * logs in selected user
    * @param {User} user
    */
@@ -56,12 +45,28 @@ export class UserMenuComponent implements OnInit {
     this.appService.setUser(user);
 
     // close user menu
-    this.modal.close();
+    if (this.modal) {
+      this.modal.close();
+    }
+  }
+
+  /**
+   * logs out the current user
+   */
+  public logout() {
+    // log out
+    this.appService.setUser(null);
+
+    // close user menu
+    if (this.modal) {
+      this.modal.close();
+    }
   }
 
   /**
    * registers new user
    */
+  // TODO: refactor
   createUser() {
     // if user with chosen username exists, log in
     const existingUser = USERS.find((user) => {
@@ -71,6 +76,11 @@ export class UserMenuComponent implements OnInit {
       // check password
       if (this.newUser.password === existingUser.password) {
         this.login(existingUser);
+
+        // close user menu
+        if (this.modal) {
+          this.modal.close();
+        }
       } else {
         this.password.setErrors({'mismatch': true, 'invalid': true});
       }
@@ -86,14 +96,17 @@ export class UserMenuComponent implements OnInit {
     this.newUser = new User('');
 
     // close user menu
-    this.modal.close();
+    if (this.modal) {
+      this.modal.close();
+    }
   }
 
   /**
    * checks if user exists
    * @param event
    */
-  checkUsername(event) {
+  onUsernameChanged(event: any) {
+    // check if username is already taken
     const username = event.target.value;
     this.usernameTaken = this.userService.checkUsername(username);
     // this.username.setErrors({'taken': this.usernameTaken});

@@ -20,16 +20,18 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('the checkUsername method should return true if username exists', () => {
-    const user1 = new User('user1');
-    service.users.push(user1);
+  describe('onUsernameChanged method',() => {
+    it('should return true if username exists', () => {
+      const user1 = new User('user1');
+      service.users.push(user1);
 
-    expect(service.checkUsername(user1.username)).toBeTruthy();
-  });
+      expect(service.checkUsername(user1.username)).toBeTruthy();
+    });
 
-  it('the checkUsername method should return false if username doesn\'t exist', () => {
-    service.users = [];
+    it('should return false if username doesn\'t exist', () => {
+      service.users = [];
 
-    expect(service.checkUsername('inexistingUser')).toBeFalsy();
+      expect(service.checkUsername('inexistingUser')).toBeFalsy();
+    });
   });
 });

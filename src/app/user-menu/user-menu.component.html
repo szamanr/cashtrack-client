@@ -75,7 +75,7 @@
     <!-- for guest -->
     <div class="modal-body" *ngIf="!appService.user">
       <!-- username -->
-      <div class="form-group" (change)="this.checkUsername($event)"
+      <div class="form-group" (change)="this.onUsernameChanged($event)"
            [ngClass]="{
         'has-danger': username.invalid && (username.dirty || username.touched),
         'has-success': username.valid && (username.dirty || username.touched)
