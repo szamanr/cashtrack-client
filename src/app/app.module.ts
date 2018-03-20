@@ -11,6 +11,7 @@ import {AccountService} from '../api/account.service';
 import {UserMenuComponent} from './user-menu/user-menu.component';
 import {ContenteditableDirective} from '../../node_modules/ng-contenteditable/src/index';
 import {AppService} from './app.service';
+import {UserService} from '../api/user.service';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import {AppService} from './app.service';
   ],
   providers: [
     AppService,
+    UserService,
     CurrencyService,
     AccountService
   ],

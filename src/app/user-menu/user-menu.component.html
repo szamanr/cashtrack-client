@@ -50,6 +50,7 @@
         <div class="form-control-feedback"
              *ngIf="password.errors && (password.dirty || password.touched)">
           <!-- TODO: message if min length not reached -->
+          <!--<p *ngIf="password.errors.minLength">password needs to be 3 characters or longer</p>-->
         </div>
       </div>
 
@@ -74,7 +75,7 @@
     <!-- for guest -->
     <div class="modal-body" *ngIf="!appService.user">
       <!-- username -->
-      <div class="form-group"
+      <div class="form-group" (change)="this.checkUsername($event)"
            [ngClass]="{
         'has-danger': username.invalid && (username.dirty || username.touched),
         'has-success': username.valid && (username.dirty || username.touched)
@@ -92,13 +93,35 @@
           <p *ngIf="username.errors.required">username is required</p>
           <!-- TODO: message if min length not reached -->
         </div>
+        <p *ngIf="usernameTaken">username is taken</p>
+      </div>
+
+      <!-- password -->
+      <div class="form-group" *ngIf="usernameTaken"
+           [ngClass]="{
+        'has-danger': password.invalid && (password.dirty || password.touched),
+        'has-success': password.valid && (password.dirty || password.touched)
+      }">
+        <label>password: </label>
+        <input type="password"
+               class="form-control"
+               formControlName="password"
+               [(ngModel)]="newUser.password"
+               required>
+        <div class="form-control-feedback"
+             *ngIf="password.errors && (password.dirty || password.touched)">
+          <p *ngIf="password.errors.mismatch">incorrect password</p>
+          <!-- TODO: message if min length not reached -->
+          <!--<p *ngIf="password.errors.minLength">password needs to be 3 characters or longer</p>-->
+        </div>
       </div>
     </div>
 
     <!-- action buttons -->
     <div class="modal-footer">
       <button *ngIf="appService.user" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
-      <button *ngIf="!appService.user" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
+      <button *ngIf="!appService.user && usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
+      <button *ngIf="!appService.user && !usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">sign up</button>
     </div>
   </form>
 </ng-template>
