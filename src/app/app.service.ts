@@ -5,13 +5,22 @@ import {ITEMS} from '../mock.data';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
+/**
+ * this service provides global app configuration and stores the application state.
+ */
 export class AppService {
-  public appTitle = 'cashtrack';
+  config = {
+    'production': false,
+    'development': true,
+    'title': 'cashtrack',
+  };
+
   public user: User = null;
+  private userId: number;
+
   items$: Observable<Item[]>;
   private items: Item[];
   private allItems: Item[];
-  private userId: number;
 
   constructor() {
     // fetch items from server

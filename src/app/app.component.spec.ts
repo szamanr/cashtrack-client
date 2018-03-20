@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import {AppComponent} from './app.component';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -11,6 +11,7 @@ import {UserService} from '../api/user.service';
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let appService: AppService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,10 +32,11 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(inject([AppService], (service) => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-  });
+    appService = service;
+  }));
 
   it('should create the app', async(() => {
     const app = fixture.debugElement.componentInstance;
@@ -42,8 +44,7 @@ describe('AppComponent', () => {
   }));
 
   it(`should have as title 'cashtrack'`, async(() => {
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('cashtrack');
+    expect(appService.config.title).toEqual('cashtrack');
   }));
 
   it('should have an addItem method', () => {

@@ -8,7 +8,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/table" routerLinkActive="active" class="nav-link" [title]="title">
+      <a routerLink="/table" routerLinkActive="active" class="nav-link" [title]="appService.config.title">
         <span class="nav-icon oi oi-list" title="table view" aria-hidden="true"></span>
       </a>
     </li>
@@ -30,10 +30,12 @@
 
 <!-- footer -->
 <footer class="page">
-  <hr/>
-  <!-- developer info -->
-  <p class="d-sm-none">viewport: xs</p>
-  <p class="d-none d-sm-block d-md-none">viewport: sm</p>
-  <p class="d-none d-md-block d-lg-none">viewport: md</p>
-  <p class="d-none d-lg-block">viewport: lg</p>
+  <section class="developer-info" *ngIf="!appService.config.production && appService.config.development">
+    <hr/>
+    <!-- developer info -->
+    <p class="d-sm-none">viewport: xs</p>
+    <p class="d-none d-sm-block d-md-none">viewport: sm</p>
+    <p class="d-none d-md-block d-lg-none">viewport: md</p>
+    <p class="d-none d-lg-block">viewport: lg</p>
+  </section>
 </footer>

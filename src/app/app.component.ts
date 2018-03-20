@@ -7,10 +7,8 @@ import {AppService} from './app.service';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'cashtrack';
 
-  constructor(private appService: AppService) {
-    this.title = appService.appTitle;
+  constructor(public appService: AppService) {
   }
 
   addItem() {
