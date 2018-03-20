@@ -20,13 +20,13 @@ export class UserMenuComponent implements OnInit {
   modal: NgbModalRef;
   usernameTaken = false;
 
-  constructor(public appService: AppService,
+  constructor(public app: AppService,
               private userService: UserService,
               private modalService: NgbModal) {
   }
 
   ngOnInit() {
-    this.appService.setUser(USERS[0]);
+    this.app.setUser(USERS[0]);
 
     // build user form
     this.setupFormControls();
@@ -42,7 +42,7 @@ export class UserMenuComponent implements OnInit {
    * @param {User} user
    */
   public login(user: User) {
-    this.appService.setUser(user);
+    this.app.setUser(user);
 
     // close user menu
     if (this.modal) {
@@ -55,7 +55,7 @@ export class UserMenuComponent implements OnInit {
    */
   public logout() {
     // log out
-    this.appService.setUser(null);
+    this.app.setUser(null);
 
     // close user menu
     if (this.modal) {
@@ -92,7 +92,7 @@ export class UserMenuComponent implements OnInit {
     // console.log('creating user: ', this.newUser);
 
     // set currently logged in user
-    this.appService.setUser(this.newUser);
+    this.app.setUser(this.newUser);
     this.newUser = new User('');
 
     // close user menu

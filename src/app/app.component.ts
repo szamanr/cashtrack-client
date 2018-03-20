@@ -8,13 +8,13 @@ import {AppService} from './app.service';
 })
 export class AppComponent {
 
-  constructor(public appService: AppService) {
+  constructor(public app: AppService) {
   }
 
   addItem() {
     // TODO: navigate to table page
 
     // add new item
-    this.appService.insertItem();
+    this.app.insertItem();
   }
 }

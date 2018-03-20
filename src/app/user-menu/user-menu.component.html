@@ -9,9 +9,9 @@
 
   <form (ngSubmit)="createUser()" #newUserForm="ngForm" [formGroup]="userForm">
     <!-- for logged-in user -->
-    <div class="modal-body" *ngIf="appService.user">
+    <div class="modal-body" *ngIf="app.user">
       <!-- id -->
-      <p>id: {{appService.user.id}}</p>
+      <p>id: {{app.user.id}}</p>
 
       <!-- username -->
       <div class="form-group"
@@ -26,7 +26,7 @@
         <input type="text"
                class="form-control"
                formControlName="username"
-               [(ngModel)]="appService.user.username"
+               [(ngModel)]="app.user.username"
                required>
         <div class="form-control-feedback"
              *ngIf="username.errors && (username.dirty || username.touched)">
@@ -45,7 +45,7 @@
         <input type="password"
                class="form-control"
                formControlName="password"
-               [(ngModel)]="appService.user.password"
+               [(ngModel)]="app.user.password"
                required>
         <div class="form-control-feedback"
              *ngIf="password.errors && (password.dirty || password.touched)">
@@ -64,7 +64,7 @@
         <input type="email"
                class="form-control"
                formControlName="email"
-               [(ngModel)]="appService.user.email"
+               [(ngModel)]="app.user.email"
                required>
         <div class="form-control-feedback"
              *ngIf="email.errors && (email.dirty || email.touched)">
@@ -73,7 +73,7 @@
     </div>
 
     <!-- for guest -->
-    <div class="modal-body" *ngIf="!appService.user">
+    <div class="modal-body" *ngIf="!app.user">
       <!-- username -->
       <div class="form-group" (change)="this.onUsernameChanged($event)"
            [ngClass]="{
@@ -119,9 +119,9 @@
 
     <!-- action buttons -->
     <div class="modal-footer">
-      <button *ngIf="appService.user" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
-      <button *ngIf="!appService.user && usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
-      <button *ngIf="!appService.user && !usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">sign up</button>
+      <button *ngIf="app.user" type="button" class="btn btn-outline-dark" (click)="logout()">log out</button>
+      <button *ngIf="!app.user && usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">log in</button>
+      <button *ngIf="!app.user && !usernameTaken" type="submit" class="btn btn-success" [disabled]="!newUserForm.form.valid">sign up</button>
     </div>
   </form>
 </ng-template>
@@ -129,6 +129,6 @@
 <!-- user menu trigger -->
 <a class="button" (click)="openUserMenu(content)">
   <span class="nav-icon oi oi-person" title="user menu" aria-hidden="true"></span>
-  <span *ngIf="!appService.user">sign in</span>
-  <span *ngIf="appService.user">{{appService.user.username}}</span>
+  <span *ngIf="!app.user">sign in</span>
+  <span *ngIf="app.user">{{app.user.username}}</span>
 </a>

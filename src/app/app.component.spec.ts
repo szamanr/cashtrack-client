@@ -11,7 +11,7 @@ import {UserService} from '../api/user.service';
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  let appService: AppService;
+  let app: AppService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -35,16 +35,15 @@ describe('AppComponent', () => {
   beforeEach(inject([AppService], (service) => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    appService = service;
+    app = service;
   }));
 
   it('should create the app', async(() => {
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   }));
 
   it(`should have as title 'cashtrack'`, async(() => {
-    expect(appService.config.title).toEqual('cashtrack');
+    expect(app.config.title).toEqual('cashtrack');
   }));
 
   it('should have an addItem method', () => {

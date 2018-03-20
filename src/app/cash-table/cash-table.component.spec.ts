@@ -13,7 +13,7 @@ describe('CashTableComponent', () => {
   let fixture: ComponentFixture<CashTableComponent>;
   let compiled;
   let table: Element;
-  let appService: AppService;
+  let app: AppService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,8 +26,8 @@ describe('CashTableComponent', () => {
   }));
 
   beforeEach(inject([AppService], (service) => {
-    appService = service;
-    appService.user = USERS[0];
+    app = service;
+    app.user = USERS[0];
 
     fixture = TestBed.createComponent(CashTableComponent);
     component = fixture.componentInstance;

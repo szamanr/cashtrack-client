@@ -29,11 +29,11 @@ describe('UserMenuComponent', () => {
     }).compileComponents();
   }));
 
-  beforeEach(inject([AppService], (appService) => {
+  beforeEach(inject([AppService], (app) => {
     fixture = TestBed.createComponent(UserMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    service = appService;
+    service = app;
 
     /* TODO
     usernameElement = fixture.debugElement.query(By.css('#guest-username'));

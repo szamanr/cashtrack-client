@@ -11,8 +11,8 @@ describe('AppService', () => {
     });
   });
 
-  beforeEach(inject([AppService], (appService) => {
-    service = appService;
+  beforeEach(inject([AppService], (app) => {
+    service = app;
   }));
 
   it('should be created', () => {

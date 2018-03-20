@@ -16,7 +16,7 @@ export class CashTableComponent implements OnInit {
   items: Observable<Item[]>;
   accounts: Account[] = [];
   currencies: Currency[] = [];
-  appService: AppService;
+  app: AppService;
   currencyService: CurrencyService;
 
   accountService: AccountService;
@@ -26,17 +26,17 @@ export class CashTableComponent implements OnInit {
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
 
-  constructor(appService: AppService,
+  constructor(app: AppService,
               currencyService: CurrencyService,
               accountService: AccountService) {
-    this.appService = appService;
+    this.app = app;
     this.currencyService = currencyService;
     this.accountService = accountService;
   }
 
   ngOnInit() {
     // fetch data
-    this.items = this.appService.items$;
+    this.items = this.app.items$;
     this.currencyService.getAll()
       .then(currencies => this.currencies = currencies);
     this.accountService.getAll()
