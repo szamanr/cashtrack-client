@@ -3,7 +3,6 @@ import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../api/user';
 import {AppService} from '../app.service';
-import {USERS} from '../../mock.data';
 import {UserService} from '../../api/user.service';
 
 @Component({
@@ -26,8 +25,6 @@ export class UserMenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.app.setUser(USERS[0]);
-
     // build user form
     this.setupFormControls();
     this.userForm = this.buildForm();
