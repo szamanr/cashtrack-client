@@ -22,12 +22,12 @@ export class UserMenuComponent implements OnInit {
   constructor(public app: AppService,
               private userService: UserService,
               private modalService: NgbModal) {
-  }
-
-  ngOnInit() {
     // build user form
     this.setupFormControls();
     this.userForm = this.buildForm();
+  }
+
+  ngOnInit() {
   }
 
   openUserMenu(content) {
