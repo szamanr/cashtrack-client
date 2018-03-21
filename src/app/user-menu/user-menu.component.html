@@ -7,8 +7,8 @@
     </button>
   </div>
 
-  <form (ngSubmit)="onUserFormSubmitted()" #newUserForm="ngForm" [formGroup]="userForm">
-    <!-- for logged-in user -->
+  <!-- for logged-in user -->
+  <form #existingUserForm="ngForm" [formGroup]="userForm">
     <div class="modal-body" *ngIf="app.user">
       <!-- id -->
       <p>id: {{app.user.id}}</p>
@@ -71,8 +71,10 @@
         </div>
       </div>
     </div>
+  </form>
 
-    <!-- for guest -->
+  <!-- for guest -->
+  <form (ngSubmit)="onUserFormSubmitted()" #newUserForm="ngForm" [formGroup]="userForm">
     <div class="modal-body" *ngIf="!app.user">
       <!-- username -->
       <div class="form-group" (change)="this.onUsernameChanged($event)"
