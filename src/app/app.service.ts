@@ -3,6 +3,7 @@ import {User} from '../api/user';
 import {Item} from '../api/item';
 import {ITEMS} from '../mock.data';
 import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 /**
@@ -11,6 +12,8 @@ import {Observable} from 'rxjs/Observable';
 export class AppService {
   public user: User = null;
   items$: Observable<Item[]>;
+  private notify = new Subject<any>();
+  newItem$ = this.notify.asObservable();
   private userId: number;
   private items: Item[];
   private allItems: Item[];
@@ -50,6 +53,9 @@ export class AppService {
 
     // update current items
     this.setItemsForCurrentUser();
+
+    // notify child component of the newly inserted item
+    this.notify.next(item.id);
 
     return Promise.resolve(item);
   }

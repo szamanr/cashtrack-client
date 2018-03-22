@@ -7,6 +7,7 @@ import {AccountService} from '../../api/account.service';
 import {AppService} from '../app.service';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../environments/environment';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-cash-table.page',
@@ -22,8 +23,8 @@ export class CashTableComponent implements OnInit {
   accountService: AccountService;
   currencies: Currency[] = [];
   currencyService: CurrencyService;
-  rowsPerPage: number;
   environment: any;
+  private subscription: Subscription;
 
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
@@ -54,5 +55,11 @@ export class CashTableComponent implements OnInit {
       {field: 'category', header: 'category'},
       {field: 'account', header: 'account'}
     ];
+
+    // get notified when a new item is added
+    this.subscription = this.app.newItem$.subscribe((newItemId) => {
+      console.log('item added with id: ', newItemId);
+      // TODO: focus on the element corresponding to the new item
+    });
   }
 }
