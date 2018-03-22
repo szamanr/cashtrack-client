@@ -45,8 +45,7 @@
         <input type="password"
                class="form-control"
                formControlName="password"
-               [(ngModel)]="app.user.password"
-               required>
+               [(ngModel)]="app.user.password">
         <div class="form-control-feedback"
              *ngIf="password.errors && (password.dirty || password.touched)">
           <!-- TODO: message if min length not reached -->
@@ -64,11 +63,20 @@
         <input type="email"
                class="form-control"
                formControlName="email"
-               [(ngModel)]="app.user.email"
-               required>
+               [(ngModel)]="app.user.email">
         <div class="form-control-feedback"
              *ngIf="email.errors && (email.dirty || email.touched)">
         </div>
+      </div>
+
+      <!-- settings -->
+      <!-- rows per page -->
+      <div class="form-group">
+        <label>rows per page: </label>
+        <input type="number"
+               class="form-control"
+               formControlName="rowsPerPage"
+               [(ngModel)]="app.user.rowsPerPage">
       </div>
     </div>
   </form>

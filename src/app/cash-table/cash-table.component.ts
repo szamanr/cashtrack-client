@@ -23,6 +23,7 @@ export class CashTableComponent implements OnInit {
   currencies: Currency[] = [];
   currencyService: CurrencyService;
   rowsPerPage: number;
+  environment: any;
 
   /*dateOptions: Intl.DateTimeFormatOptions = {
   };*/
@@ -34,9 +35,7 @@ export class CashTableComponent implements OnInit {
     this.currencyService = currencyService;
     this.accountService = accountService;
 
-    this.rowsPerPage = (this.app.user && this.app.user.rowsPerPage)
-      ? this.app.user.rowsPerPage
-      : environment.defaultRowsPerPage;
+    this.environment = environment;
   }
 
   ngOnInit() {

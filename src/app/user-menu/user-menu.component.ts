@@ -16,6 +16,7 @@ export class UserMenuComponent implements OnInit {
   username: FormControl;
   password: FormControl;
   email: FormControl;
+  rowsPerPage: FormControl;
   modal: NgbModalRef;
   foundUser: User;
 
@@ -126,6 +127,7 @@ export class UserMenuComponent implements OnInit {
     this.email = new FormControl('', [
       Validators.email
     ]);
+    this.rowsPerPage = new FormControl('', []);
   }
 
   /**
@@ -136,7 +138,8 @@ export class UserMenuComponent implements OnInit {
     return new FormGroup({
       username: this.username,
       password: this.password,
-      email: this.email
+      email: this.email,
+      rowsPerPage: this.rowsPerPage
     });
   }
 }

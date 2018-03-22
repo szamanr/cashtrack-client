@@ -1,4 +1,5 @@
-<p-table [value]="items | async" id="items-list" [responsive]="true" [paginator]="true" [rows]="rowsPerPage">
+<p-table [value]="items | async" id="items-list" [responsive]="true" [paginator]="true"
+         [rows]="(app.user && app.user.rowsPerPage) ? app.user.rowsPerPage : environment.defaultRowsPerPage">
   <ng-template pTemplate="header">
     <tr>
       <th *ngFor="let col of cols" [pSortableColumn]="col.field">
