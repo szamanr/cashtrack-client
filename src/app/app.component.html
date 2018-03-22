@@ -8,7 +8,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/table" routerLinkActive="active" class="nav-link" [title]="app.config.title">
+      <a routerLink="/table" routerLinkActive="active" class="nav-link" [title]="environment.title">
         <span class="nav-icon oi oi-list" title="table view" aria-hidden="true"></span>
       </a>
     </li>
@@ -30,7 +30,7 @@
 
 <!-- footer -->
 <footer class="page">
-  <section class="developer-info" *ngIf="!app.config.production && app.config.development">
+  <section class="developer-info" *ngIf="!environment.production">
     <hr/>
     <!-- developer info -->
     <p class="d-sm-none">viewport: xs</p>

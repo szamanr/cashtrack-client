@@ -9,12 +9,6 @@ import {Observable} from 'rxjs/Observable';
  * this service provides global app configuration and stores the application state.
  */
 export class AppService {
-  config = {
-    'production': false,
-    'development': true,
-    'title': 'cashtrack'
-  };
-
   public user: User = null;
   items$: Observable<Item[]>;
   private userId: number;
@@ -27,7 +21,7 @@ export class AppService {
 
     this.items$ = new Observable<Item[]>((observer) => {
       // observer.next(this.items);
-      setInterval(() => observer.next(this.items), 1000);
+      setInterval(() => observer.next(this.items), 500);
     });
   }
 

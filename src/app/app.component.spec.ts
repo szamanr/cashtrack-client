@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppService} from './app.service';
 import {UserService} from '../api/user.service';
+import {environment} from '../environments/environment';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -43,7 +44,7 @@ describe('AppComponent', () => {
   }));
 
   it(`should have as title 'cashtrack'`, async(() => {
-    expect(app.config.title).toEqual('cashtrack');
+    expect(environment.title).toEqual('cashtrack');
   }));
 
   it('should have an addItem method', () => {
