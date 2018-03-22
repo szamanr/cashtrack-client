@@ -116,8 +116,7 @@
         <input type="password"
                class="form-control"
                formControlName="password"
-               [(ngModel)]="formUser.password"
-               required>
+               [(ngModel)]="formUser.password">
         <div class="form-control-feedback"
              *ngIf="password.errors && (password.dirty || password.touched)">
           <p *ngIf="password.errors.mismatch">incorrect password</p>

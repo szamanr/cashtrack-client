@@ -122,7 +122,7 @@ export class UserMenuComponent implements OnInit {
       Validators.minLength(3)
     ]);
     this.password = new FormControl('', [
-      Validators.minLength(8)
+      // Validators.minLength(8)
     ]);
     this.email = new FormControl('', [
       Validators.email
