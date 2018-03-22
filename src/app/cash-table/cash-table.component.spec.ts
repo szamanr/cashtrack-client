@@ -7,6 +7,8 @@ import {CurrencyService} from '../../api/currency.service';
 import {AccountService} from '../../api/account.service';
 import {AppService} from '../app.service';
 import {USERS} from '../../mock.data';
+import {CalendarModule} from 'primeng/primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('CashTableComponent', () => {
   let component: CashTableComponent;
@@ -19,8 +21,7 @@ describe('CashTableComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CashTableComponent],
       providers: [AppService, CurrencyService, AccountService],
-      imports: [TableModule,
-        FormsModule]
+      imports: [TableModule, FormsModule, CalendarModule, BrowserAnimationsModule]
     })
       .compileComponents();
   }));

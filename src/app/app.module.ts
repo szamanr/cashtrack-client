@@ -12,6 +12,8 @@ import {UserMenuComponent} from './user-menu/user-menu.component';
 import {ContenteditableDirective} from '../../node_modules/ng-contenteditable/src/index';
 import {AppService} from './app.service';
 import {UserService} from '../api/user.service';
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import {UserService} from '../api/user.service';
     AppRoutingModule,
     NgbModule.forRoot(),
     TableModule,
+    CalendarModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule
   ],

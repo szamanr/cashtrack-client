@@ -16,8 +16,15 @@
       <!-- date -->
       <!-- TODO: custom date format -->
       <td>
-        {{item.date.toLocaleDateString()}}
-        {{item.date.toLocaleTimeString()}}
+        <!--{{item.date.toLocaleDateString()}}
+        {{item.date.toLocaleTimeString()}}-->
+        <p-calendar [(ngModel)]="item.date"
+                    dateFormat="yy.mm.dd"
+                    showTime="true"
+                    hourFormat="24"
+                    showButtonBar="true"
+                    inputStyleClass="form-control"
+        ></p-calendar>
       </td>
       <!-- TODO: ERROR: cannot edit date because of format issue -->
       <!--<td pEditableColumn>
