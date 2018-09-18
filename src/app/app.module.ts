@@ -9,11 +9,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CurrencyService} from '../api/currency.service';
 import {AccountService} from '../api/account.service';
 import {UserMenuComponent} from './user-menu/user-menu.component';
-import {ContenteditableDirective} from '../../node_modules/ng-contenteditable/src/index';
 import {AppService} from './app.service';
 import {UserService} from '../api/user.service';
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ContenteditableDirective} from 'ng-contenteditable';
 
 @NgModule({
   imports: [

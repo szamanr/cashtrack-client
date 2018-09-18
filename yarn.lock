@@ -4178,9 +4178,9 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
-ng-contenteditable@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/ng-contenteditable/-/ng-contenteditable-1.0.5.tgz#7100b23c1177f3bc63a10dd2ad761eb21c90a109"
+ng-contenteditable@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/ng-contenteditable/-/ng-contenteditable-2.0.2.tgz#234e9c58cb4ee47ac2a7017f2f08ced9731fde74"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -4854,9 +4854,9 @@ pretty-error@^2.0.2:
     renderkid "^2.0.1"
     utila "~0.4"
 
-primeng@^5.2.0-rc.2:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/primeng/-/primeng-5.2.3.tgz#f4f9c1772d00cb54505d676be826e8886fd7f613"
+primeng@^6.1.2:
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/primeng/-/primeng-6.1.4.tgz#c4b92c1c9f8ba6cf717b122ed87c3701a5e1cf20"
 
 process-nextick-args@~2.0.0:
   version "2.0.0"
