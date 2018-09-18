@@ -5,9 +5,8 @@ import {Currency} from '../../api/currency';
 import {CurrencyService} from '../../api/currency.service';
 import {AccountService} from '../../api/account.service';
 import {AppService} from '../app.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable, Subscription} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-cash-table.page',
