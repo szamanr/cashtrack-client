@@ -32,7 +32,12 @@
              *ngIf="username.errors && (username.dirty || username.touched)">
           <p *ngIf="username.errors.required">username is required</p>
           <!-- TODO: message if min length not reached -->
+
         </div>
+        <!-- confirmation message -->
+        <p class="text-success" *ngIf="username.dirty && username.touched && username.valid">
+          username changed!
+        </p>
       </div>
 
       <!-- password -->
@@ -51,6 +56,11 @@
           <!-- TODO: message if min length not reached -->
           <!--<p *ngIf="password.errors.minLength">password needs to be 3 characters or longer</p>-->
         </div>
+
+        <!-- confirmation message -->
+        <p class="text-success" *ngIf="password.dirty && password.touched && password.valid">
+          password changed!
+        </p>
       </div>
 
       <!-- email -->
@@ -67,6 +77,11 @@
         <div class="form-control-feedback"
              *ngIf="email.errors && (email.dirty || email.touched)">
         </div>
+
+        <!-- confirmation message -->
+        <p class="text-success" *ngIf="email.dirty && email.touched && email.valid">
+          email changed!
+        </p>
       </div>
 
       <!-- settings -->
