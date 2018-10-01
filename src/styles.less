@@ -1,15 +1,16 @@
 @import "variables";
 
+// generic type selector styles
 a.button {
   cursor: pointer;
 }
 
 input {
   &.ng-valid {
-    border-color: #008000;
+    border-color: @valid;
   }
   &.ng-invalid {
-    border-color: #800000;
+    border-color: @invalid;
   }
 }
 
@@ -32,4 +33,10 @@ html, body {
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+}
+
+// extra developer info should be less visible
+.developer-info {
+  color: @foreground-secondary;
+  font-size: smaller;
 }

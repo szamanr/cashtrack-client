@@ -12,13 +12,18 @@ nav {
       align-items: center;
     }
 
+    .nav-item {
+      .nav-link {
+        color: @inactive;
+
+        &.active {
+          color: @active;
+        }
+      }
+    }
+
     #add-item-button {
-      color: darken(white, 20%);
+      color: darken(@background, 20%);
     }
   }
-}
-
-footer {
-  color: #808080;
-  font-size: smaller;
 }

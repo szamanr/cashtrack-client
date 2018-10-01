@@ -1,24 +1,35 @@
 <!-- navigation -->
 <nav>
+  <!-- user menu button -->
   <app-user-menu></app-user-menu>
+
+  <!-- floating navigation bar-->
   <ul class="nav justify-content-center flex-sm-column" id="navigation-bar">
-    <li class="nav-item">
+    <!-- graph view (TODO) -->
+    <li class="nav-item" id="nav-graph">
       <a routerLink="/graph" routerLinkActive="active" class="nav-link disabled">
         <span class="nav-icon oi oi-pie-chart" title="graph" aria-hidden="true"></span>
       </a>
     </li>
-    <li class="nav-item">
+
+    <!-- table view -->
+    <li class="nav-item" id="nav-table">
       <a routerLink="/table" routerLinkActive="active" class="nav-link" [title]="environment.title">
         <span class="nav-icon oi oi-list" title="table view" aria-hidden="true"></span>
       </a>
     </li>
-    <li class="nav-item">
+
+    <!-- filter (TODO) -->
+    <li class="nav-item" id="nav-filter">
       <a routerLink="/filter" routerLinkActive="active" class="nav-link disabled">
         <span class="nav-icon oi oi-beaker" title="filter" aria-hidden="true"></span>
       </a>
     </li>
-    <li class="nav-item">
-      <a (click)="addItem()" routerLinkActive="active" class="nav-link button" id="add-item-button">
+
+    <!-- add item button-->
+    <li class="nav-item" id="nav-add-item">
+      <a (click)="addItem()" routerLinkActive="active" routerLinkActiveOptions="" class="nav-link button"
+         id="add-item-button">
         <span class="nav-icon oi oi-plus" title="new item" aria-hidden="true"></span>
       </a>
     </li>
